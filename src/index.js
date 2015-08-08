@@ -5,9 +5,9 @@ var GMaps = require('gmaps')
 // App
 var App = require('./app')
 
-// View: map
-var map = require('./views/map')
-App.Views.map  = new Map
+// View: Map
+var Map = require('./views/map')
+App.Views.Map  = new Map
 
 // App Router
 App.Router = Backbone.Router.extend({
@@ -21,7 +21,7 @@ App.Router = Backbone.Router.extend({
   // Route handlers
 
   index: function() {
-    App.Views.map
+    App.Views.Map.render()
   },
 
   defaultRoute: function(actions) {
