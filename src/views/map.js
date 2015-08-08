@@ -14,15 +14,10 @@ var Map = Backbone.View.extend({
 
 		var Map = new google.maps.Map($('#map')[0], {
 			mapTypeId: google.maps.MapTypeId.ROADMAP,
-			zoom: 5,
-			center: {lat: -33.8666, lng: 151.1958},
+			zoom: 3,
+			center: {lat: 10, lng: 0},
 			disableDefaultUI: true
 		})
-
-		// var defaultBounds = new google.maps.LatLngBounds(
-		// 	new google.maps.LatLng(-33.8902, 151.1759),
-		// 	new google.maps.LatLng(-33.8474, 151.2631));
-		// Map.fitBounds(defaultBounds);	
 
 		// Create the search box and link it to the UI element.
 		var input = $('#address')[0]
@@ -40,9 +35,9 @@ var Map = Backbone.View.extend({
 				return
 			}
 
-			markers.forEach(function (marker) {
-				marker.setMap(null)
-			})
+			// markers.forEach(function (marker) {
+			// 	marker.setMap(null)
+			// })
 
 			// For each place, get the icon, place name, and location.
 			markers = []
@@ -70,10 +65,25 @@ var Map = Backbone.View.extend({
 				markers.push(marker)
 
 				bounds.extend(marker.position)
+
+				var G = marker.position.G
+				G = Math.round(G * 100) / 100 - 5
+
+				var  K = marker.position.K
+				K = Math.round(K * 100) / 100 - 8
+
+				MarkerPosition = new google.maps.LatLng(G, K)
+
+				Map.setCenter(MarkerPosition)
+				Map.panTo(MarkerPosition)
 			})
 
-			Map.fitBounds(bounds)
-			Map.setZoom(5)
+			// Map.fitBounds(bounds)
+			Map.setZoom(3)
+
+			$('#geocoding_form').css('display', 'none')
+			$('#why').css('display', 'initial')
+
 		})
 		// [END region_getplaces]
 		
@@ -83,5 +93,6 @@ var Map = Backbone.View.extend({
 
 
 module.exports = Map
+
 
 
