@@ -5,6 +5,9 @@ var GMaps = require('gmaps')
 // App
 var App = require('./app')
 
+// Collection: Place
+var placeCollection = require('./collections/place');
+
 // View: Map
 var Map = require('./views/map')
 App.Views.Map  = new Map

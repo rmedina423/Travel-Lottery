@@ -8,15 +8,31 @@ var App = require('../app')
 
 var Map = Backbone.View.extend({
 
+	collection: App.Collections.place,
+
 	render: function () {
 
 		var markers = []
+
 
 		var Map = new google.maps.Map($('#map')[0], {
 			mapTypeId: google.maps.MapTypeId.ROADMAP,
 			zoom: 3,
 			center: {lat: 10, lng: 0},
 			disableDefaultUI: true
+		})
+
+		this.collection.fetch().done(function (places) {
+			places.forEach(function (place) {
+				console.log(place.G, place.K)
+
+				var marker = new google.maps.Marker({
+					map: Map,
+					position: new google.maps.LatLng(place.G, place.K)
+				})
+
+				markers.push(marker)
+			})
 		})
 
 		// Create the search box and link it to the UI element.
@@ -56,13 +72,15 @@ var Map = Backbone.View.extend({
 				// Create a marker for each place.
 				var marker = new google.maps.Marker({
 					map: Map,
-					icon: image,
-					title: place.name,
+					// icon: image,
+					// title: place.name,
 					position: place.geometry.location,
-					animation: google.maps.Animation.DROP
+					// animation: google.maps.Animation.DROP
 				})
 
 				markers.push(marker)
+
+				App.Collections.place.create(place.geometry.location)
 
 				bounds.extend(marker.position)
 
