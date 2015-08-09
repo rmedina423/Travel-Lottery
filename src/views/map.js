@@ -3,6 +3,7 @@ var Backbone = require('backbone')
 // App
 
 var App = require('../app')
+var Place = require('../models/place');
 
 // View: map
 
@@ -14,26 +15,46 @@ var Map = Backbone.View.extend({
 
 		var markers = []
 
-
 		var Map = new google.maps.Map($('#map')[0], {
 			mapTypeId: google.maps.MapTypeId.ROADMAP,
 			zoom: 3,
-			center: {lat: 10, lng: 0},
+			center: {lat: 10, lng: 20},
 			disableDefaultUI: true
 		})
 
 		this.collection.fetch().done(function (places) {
 			places.forEach(function (place) {
-				console.log(place.G, place.K)
 
 				var marker = new google.maps.Marker({
 					map: Map,
 					position: new google.maps.LatLng(place.G, place.K)
 				})
 
-				markers.push(marker)
+				markers.push(marker);
+
 			})
 		})
+
+		setInterval(function () {
+			function randomRange(min, max) {
+				return (Math.floor(Math.random() * (max - min + 1)) + min)
+			}
+
+			randomRange(1, markers.length)
+			var place = new Place({ id: randomRange(1, markers.length) })
+
+			place.fetch().done(function (data) {
+				var marker = new google.maps.Marker({
+					map: Map,
+					position: new google.maps.LatLng(data.G, data.K)
+				})
+
+				Map.setCenter(marker.position)
+				Map.panTo(marker.position)
+			})
+
+		}, 3000)
+
 
 		// Create the search box and link it to the UI element.
 		var input = $('#address')[0]
@@ -50,10 +71,6 @@ var Map = Backbone.View.extend({
 			if (places.length == 0) {
 				return
 			}
-
-			// markers.forEach(function (marker) {
-			// 	marker.setMap(null)
-			// })
 
 			// For each place, get the icon, place name, and location.
 			markers = []
@@ -101,7 +118,6 @@ var Map = Backbone.View.extend({
 
 			$('#geocoding_form').css('display', 'none')
 			$('#why').css('display', 'initial')
-
 		})
 		// [END region_getplaces]
 		
@@ -114,3 +130,25 @@ module.exports = Map
 
 
 
+/*		randomizer = function (places) {
+			setInterval(function () {
+				function randomRange(min, max) {
+					return (Math.floor(Math.random() * (max - min + 1)) + min)
+				}
+
+				places.forEach(function (place) {
+
+					if(place.id == randomRange(1, places.length)) {
+						console.log(place.id)
+					}
+
+				})
+
+
+				// var position = new google.maps.LatLng(place.G, place.K)
+
+				// Map.setCenter(position)
+				// Map.panTo(position)
+
+			}, 3000)
+		}*/
