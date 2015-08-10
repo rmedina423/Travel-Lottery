@@ -16,7 +16,7 @@ html, body, #map {
 	font-size: 60px;
 }
 
-#geocoding_form, #why {
+#geocoding_form, #why, #sign-in {
 	position: absolute;
 	text-align: center;
 	top: 70%;
@@ -29,7 +29,7 @@ label {
 	font-size: 25px;
 }
 
-#address, #this_is_why {
+#address, #this_is_why, #sign-in {
 	display: block;
 	box-sizing: border-box;
 	width: 400px;
@@ -50,8 +50,4 @@ label {
 	&:focus {
 		border-color: #4d90fe;
 	}
-}
-
-#why {
-	display: none;
 }

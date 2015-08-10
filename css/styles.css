@@ -14,7 +14,7 @@ html, body, #map {
   text-align: center;
   font-size: 60px; }
 
-#geocoding_form, #why {
+#geocoding_form, #why, #sign-in {
   position: absolute;
   text-align: center;
   top: 70%;
@@ -25,7 +25,7 @@ label {
   font-family: Roboto;
   font-size: 25px; }
 
-#address, #this_is_why {
+#address, #this_is_why, #sign-in {
   display: block;
   box-sizing: border-box;
   width: 400px;
@@ -42,8 +42,5 @@ label {
   font-size: 15px;
   font-weight: 300;
   text-overflow: ellipsis; }
-  #address:focus, #this_is_why:focus {
+  #address:focus, #this_is_why:focus, #sign-in:focus {
     border-color: #4d90fe; }
-
-#why {
-  display: none; }

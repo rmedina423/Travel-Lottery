@@ -1,9 +1,14 @@
 var $ = require('jquery')
 var Backbone = require('backbone')
+var _ = require('lodash')
 // App
 
 var App = require('../app')
-var Place = require('../models/place');
+var Place = require('../models/place')
+
+var addressTemplate = require('../templates/address.hbs')
+var reasonTemplate = require('../templates/reason.hbs')
+var whyTemplate = require('../templates/this_is_why.hbs')
 
 // View: map
 
@@ -12,8 +17,10 @@ var Map = Backbone.View.extend({
 	collection: App.Collections.place,
 
 	render: function () {
-
+		var _this = this
 		var markers = []
+
+		$('body').append(addressTemplate())
 
 		var Map = new google.maps.Map($('#map')[0], {
 			mapTypeId: google.maps.MapTypeId.ROADMAP,
@@ -23,6 +30,7 @@ var Map = Backbone.View.extend({
 		})
 
 		this.collection.fetch().done(function (places) {
+			_this.placesCached = places
 			places.forEach(function (place) {
 
 				var marker = new google.maps.Marker({
@@ -31,30 +39,27 @@ var Map = Backbone.View.extend({
 				})
 
 				markers.push(marker);
-
 			})
 		})
 
-		setInterval(function () {
-			function randomRange(min, max) {
-				return (Math.floor(Math.random() * (max - min + 1)) + min)
-			}
+		// setInterval(function () {
 
-			randomRange(1, markers.length)
-			var place = new Place({ id: randomRange(1, markers.length) })
+		// 	var place = _.find(_this.placesCached,{ id: _.random(1, markers.length) })
 
-			place.fetch().done(function (data) {
-				var marker = new google.maps.Marker({
-					map: Map,
-					position: new google.maps.LatLng(data.G, data.K)
-				})
+		// 	var marker = new google.maps.Marker({
+		// 		map: Map,
+		// 		position: new google.maps.LatLng(place.G, place.K)
+		// 	})
 
-				Map.setCenter(marker.position)
-				Map.panTo(marker.position)
-			})
+		// 	var G = marker.position.G - 25
+		// 	var  K = marker.position.K - 40
 
-		}, 3000)
+		// 	MarkerPosition = new google.maps.LatLng(G, K)
 
+		// 	Map.setCenter(MarkerPosition)
+		// 	Map.panTo(MarkerPosition)
+
+		// }, 3000)
 
 		// Create the search box and link it to the UI element.
 		var input = $('#address')[0]
@@ -101,11 +106,8 @@ var Map = Backbone.View.extend({
 
 				bounds.extend(marker.position)
 
-				var G = marker.position.G
-				G = Math.round(G * 100) / 100 - 5
-
-				var  K = marker.position.K
-				K = Math.round(K * 100) / 100 - 8
+				var G = marker.position.G - 25
+				var  K = marker.position.K - 40
 
 				MarkerPosition = new google.maps.LatLng(G, K)
 
@@ -117,7 +119,16 @@ var Map = Backbone.View.extend({
 			Map.setZoom(3)
 
 			$('#geocoding_form').css('display', 'none')
-			$('#why').css('display', 'initial')
+
+			$('main').append(reasonTemplate())
+
+			$('input.btn').on('click', function(event) {
+				event.preventDefault()
+
+				console.log($('#this_is_why').val())
+
+				$('main').append(whyTemplate())
+			})
 		})
 		// [END region_getplaces]
 		
@@ -130,25 +141,3 @@ module.exports = Map
 
 
 
-/*		randomizer = function (places) {
-			setInterval(function () {
-				function randomRange(min, max) {
-					return (Math.floor(Math.random() * (max - min + 1)) + min)
-				}
-
-				places.forEach(function (place) {
-
-					if(place.id == randomRange(1, places.length)) {
-						console.log(place.id)
-					}
-
-				})
-
-
-				// var position = new google.maps.LatLng(place.G, place.K)
-
-				// Map.setCenter(position)
-				// Map.panTo(position)
-
-			}, 3000)
-		}*/
