@@ -6,7 +6,8 @@ var GMaps = require('gmaps')
 var App = require('./app')
 
 // Collection: Place
-var placeCollection = require('./collections/place');
+var placeCollection = require('./collections/place')
+var userCollection = require('./collections/user')
 
 // View: Map
 var Map = require('./views/map')

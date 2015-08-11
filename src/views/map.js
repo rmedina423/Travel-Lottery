@@ -5,6 +5,7 @@ var _ = require('lodash')
 
 var App = require('../app')
 var Place = require('../models/place')
+var User = require('../models/user')
 
 var addressTemplate = require('../templates/address.hbs')
 var reasonTemplate = require('../templates/reason.hbs')
@@ -17,6 +18,15 @@ var Map = Backbone.View.extend({
 	collection: App.Collections.place,
 
 	render: function () {
+		var PersonLoggedIn = {
+			name: 'Ryan M. Medina',
+			email: 'rmedina423@gmail.com',
+			image: 'whatever'
+		}
+		var user = new User(PersonLoggedIn)
+		App.Collections.user.add(user)
+		user.save()
+
 		var _this = this
 		var markers = []
 
@@ -35,74 +45,79 @@ var Map = Backbone.View.extend({
 
 				var marker = new google.maps.Marker({
 					map: Map,
-					position: new google.maps.LatLng(place.G, place.K)
+					position: new google.maps.LatLng(place.lat, place.lng)
 				})
 
 				markers.push(marker);
 			})
 		})
 
-		// setInterval(function () {
 
-		// 	var place = _.find(_this.placesCached,{ id: _.random(1, markers.length) })
+		setInterval(function () {
+			if (App.Settings.rotateMap) {
 
-		// 	var marker = new google.maps.Marker({
-		// 		map: Map,
-		// 		position: new google.maps.LatLng(place.G, place.K)
-		// 	})
+				var place = _.find(_this.placesCached,{ id: _.random(1, markers.length) })
 
-		// 	var G = marker.position.G - 25
-		// 	var  K = marker.position.K - 40
+				var marker = new google.maps.Marker({
+					map: Map,
+					position: new google.maps.LatLng(place.lat, place.lng)
+				})
 
-		// 	MarkerPosition = new google.maps.LatLng(G, K)
+				var lat = marker.position.G - 25
+				var  lng = marker.position.K - 40
 
-		// 	Map.setCenter(MarkerPosition)
-		// 	Map.panTo(MarkerPosition)
+				MarkerPosition = new google.maps.LatLng(lat, lng)
 
-		// }, 3000)
+				Map.setCenter(MarkerPosition)
+				Map.panTo(MarkerPosition)
+			}
+
+		}, 3000)
 
 		// Create the search box and link it to the UI element.
 		var input = $('#address')[0]
-		// map.controls[google.maps.ControlPosition.TOP_LEFT].push(input)
-
 		var searchBox = new google.maps.places.SearchBox(input);
 
-		// [START region_getplaces]
 		// Listen for the event fired when the user selects an item from the
 		// pick list. Retrieve the matching places for that item.
 		google.maps.event.addListener(searchBox, 'places_changed', function() {
-			var places = searchBox.getPlaces()
+			App.Settings.rotateMap = false
 
-			if (places.length == 0) {
+			$('#geocoding_form').css('display', 'none')
+
+			var placeArray = searchBox.getPlaces()
+			var place = placeArray[0]
+
+			if (placeArray.length == 0) {
 				return
 			}
 
 			// For each place, get the icon, place name, and location.
-			markers = []
 			var bounds = new google.maps.LatLngBounds()
-
-			places.forEach(function (place) {
-
-				var image = {
-					url: place.icon,
-					size: new google.maps.Size(71, 71),
-					origin: new google.maps.Point(0, 0),
-					anchor: new google.maps.Point(17, 34),
-					scaledSize: new google.maps.Size(25, 25)
-				}
 
 				// Create a marker for each place.
 				var marker = new google.maps.Marker({
 					map: Map,
-					// icon: image,
-					// title: place.name,
+					title: place.name,
 					position: place.geometry.location,
-					// animation: google.maps.Animation.DROP
+					animation: google.maps.Animation.DROP
 				})
+
+				_this.markerCached = marker
+
+				$('main').append(reasonTemplate({destination: place.name}))
 
 				markers.push(marker)
 
-				App.Collections.place.create(place.geometry.location)
+				var placeData = {
+					name: place.name,
+					lat: place.geometry.location.G,
+					lng: place.geometry.location.K
+				}
+
+				var place = new Place(placeData)
+				App.Collections.place.add(place)
+				place.save()
 
 				bounds.extend(marker.position)
 
@@ -113,21 +128,38 @@ var Map = Backbone.View.extend({
 
 				Map.setCenter(MarkerPosition)
 				Map.panTo(MarkerPosition)
-			})
 
-			// Map.fitBounds(bounds)
-			Map.setZoom(3)
-
-			$('#geocoding_form').css('display', 'none')
-
-			$('main').append(reasonTemplate())
 
 			$('input.btn').on('click', function(event) {
 				event.preventDefault()
 
-				console.log($('#this_is_why').val())
+				// start interval again!
 
-				$('main').append(whyTemplate())
+				var why = $('#this_is_why').val()
+
+				centerOfMap = Map.getCenter()
+
+				CurrentPlace = App.Collections.place.findWhere({
+					lat: centerOfMap.G +25,
+					lng: centerOfMap.K +40
+				})
+
+				CurrentUser = App.Collections.user.findWhere(PersonLoggedIn)
+				CurrentUser.save({msg: why, placeId: CurrentPlace.id})
+
+				var data = {
+					name: PersonLoggedIn.name,
+					msg: why
+				}
+
+				var infowindow = new google.maps.InfoWindow({
+					content: whyTemplate(data)
+				});
+
+				infowindow.open(Map,_this.markerCached);
+
+				$('#why').css('display', 'none')
+				App.Settings.rotateMap = true
 			})
 		})
 		// [END region_getplaces]
