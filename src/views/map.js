@@ -67,18 +67,39 @@ var Map = Backbone.View.extend({
 			})
 		})
 
+		var infowindow
+
 		setInterval(function () {
 			if (App.Settings.rotateMap) {
 
+				if (infowindow) {
+					infowindow.close()
+				}
+
 				var place = _this.collection.findWhere({ id: _.random(1, markers.length) })
+				var user = App.Collections.user.findWhere({ placeId: place.id})
+				if (user) {
+					var userInfo = {
+						name: user.get('name'),
+						msg: user.get('msg')
+					}
 
-				var lat = place.get('lat') - 25
-				var  lng = place.get('lng') - 40
+					var lat = place.get('lat')
+					var lng = place.get('lng')
 
-				MarkerPosition = new google.maps.LatLng(lat, lng)
+					markerPositionViewPort = new google.maps.LatLng(lat - 25, lng -40)
+					markerPositionInfo = new google.maps.LatLng(lat, lng)
 
-				Map.setCenter(MarkerPosition)
-				Map.panTo(MarkerPosition)
+					infowindow = new google.maps.InfoWindow({
+						content: whyTemplate(userInfo),
+						position: markerPositionInfo
+					})
+
+					infowindow.open(Map)
+	 - 
+					Map.setCenter(markerPositionViewPort)
+					Map.panTo(markerPositionViewPort)
+				}
 			}
 
 		}, 3000)
@@ -178,9 +199,9 @@ var Map = Backbone.View.extend({
 
 			var infowindow = new google.maps.InfoWindow({
 				content: whyTemplate(data)
-			});
+			})
 
-			infowindow.open(Map,_this.markerCached);
+			infowindow.open(Map,_this.markerCached)
 
 			$('#why').css('display', 'none')
 			App.Settings.rotateMap = true
