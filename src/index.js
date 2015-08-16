@@ -1,6 +1,5 @@
 /* jshint node: true, asi: true */
 var Backbone = require('backbone')
-var GMaps = require('gmaps')
 
 // App
 var App = require('./app')
@@ -9,9 +8,18 @@ var App = require('./app')
 var placeCollection = require('./collections/place')
 var userCollection = require('./collections/user')
 
-// View: Map
-var Map = require('./views/map')
-App.Views.Map  = new Map
+// View: Landing Page
+var LandingPage = require('./views/landing-page')
+App.Views.landingPage = new LandingPage
+
+
+var Map = require('./map')
+var map = new Map
+
+
+//View: where-why
+// var WhereWhy = require('./views/where-why')
+// App.Views.whereWhy = new WhereWhy
 
 // App Router
 App.Router = Backbone.Router.extend({
@@ -25,7 +33,7 @@ App.Router = Backbone.Router.extend({
   // Route handlers
 
   index: function() {
-    App.Views.Map.render()
+    App.Views.landingPage.render()
   },
 
   defaultRoute: function(actions) {
@@ -37,3 +45,14 @@ App.Router = Backbone.Router.extend({
 App.router = new App.Router;
 
 Backbone.history.start();
+
+function signInCallback(authResult) {
+  if (authResult.code) {
+    $.post('/auth/google/callback', { code: authResult.code})
+    .done(function(data) {
+      $('#signinButton').hide();
+    }); 
+  } else if (authResult.error) {
+    console.log('There was an error: ' + authResult.error);
+  }
+};

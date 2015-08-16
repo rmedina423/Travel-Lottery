@@ -7,7 +7,7 @@ module.exports = {
 
   // Settings
   Settings: {
-    apiRoot: 'http://localhost:3000',
+    apiRoot: '/api',
     rotateMap: true
   }
   

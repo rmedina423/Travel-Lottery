@@ -1,46 +1,129 @@
+/****************************************
+  Inherited Syles
+*****************************************/
+html {
+  box-sizing: border-box;
+  color: white;
+  font-family: 'Quicksand', sans-serif; }
+
+*, *::before, *::after {
+  box-sizing: inherit;
+  color: inherit;
+  font: inherit; }
+
+/****************************************
+  Defaults
+*****************************************/
+/****************************************
+  Primary Layout
+*****************************************/
 html, body, #map {
   height: 100%;
   margin: 0;
-  padding: 0; }
+  padding: 0;
+  background-color: #b3d1ff; }
 
-#donations {
+#primary-message, .tiles {
+  height: 100vh;
+  padding: 1px; }
+
+#primary-message > div {
+  width: 900px;
+  margin: auto;
+  margin-top: 175px; }
+
+.platforms > div {
+  height: 400px;
+  margin: auto;
+  width: 960px; }
+  .platforms > div i {
+    margin-top: 140px; }
+
+footer {
+  height: 500px; }
+
+/****************************************
+Components
+*****************************************/
+#contributions {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translateX(-50%);
-  background-color: black;
-  color: white;
+  text-align: center;
   width: 100%;
+  font-size: 60px;
+  color: white;
+  background-color: #DFE9C9;
+  text-shadow: 1px 1px 5px #969696;
+  border: 2px solid #b7d7b4; }
+  #contributions span {
+    font-weight: bold; }
+
+#primary-message {
   text-align: center;
-  font-size: 60px; }
+  margin: auto;
+  background-color: #b3d1ff;
+  color: #fff; }
+  #primary-message h1 {
+    font-size: 50px; }
+  #primary-message p {
+    font-size: 20px;
+    line-height: 30px; }
+    #primary-message p i {
+      margin: 10px 0;
+      font-size: 23px; }
+  #primary-message a > i {
+    margin-top: 75px;
+    font-size: 50px;
+    width: 50px; }
 
-#geocoding_form, #why, #sign-in {
-  position: absolute;
+.tiles {
   text-align: center;
-  top: 70%;
-  left: 50%;
-  transform: translateX(-50%); }
+  font-family: 'Quicksand', sans-serif;
+  background-color: #DFE9C9;
+  color: #fff; }
+  .tiles header {
+    margin-top: 80px;
+    font-size: 50px; }
+  .tiles h6 {
+    font-size: 19px;
+    margin: 30px 0 55px 0; }
+  .tiles .icon {
+    color: #C0E0BB;
+    text-decoration: none; }
+  .tiles i {
+    font-size: 23;
+    color: #f8f3da; }
 
-label {
-  font-family: Roboto;
-  font-size: 25px; }
+.tile {
+  display: inline-block;
+  width: 260px;
+  margin-left: 45px; }
+  .tile h3 {
+    font-size: 22px;
+    font-weight: 700; }
+  .tile p {
+    margin: 0;
+    font-size: 18px; }
+  .tile i {
+    color: #f4eecb;
+    font-size: 90px;
+    text-shadow: 1px 1px 5px #969696; }
 
-#address, #this_is_why, #sign-in {
-  display: block;
-  box-sizing: border-box;
-  width: 400px;
-  height: 32px;
-  margin-top: 10px;
-  padding: 0 11px 0 13px;
-  border: 1px solid transparent;
-  border-radius: 2px 0 0 2px;
-  -moz-box-sizing: border-box;
-  outline: none;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
-  background-color: #fff;
-  font-family: Roboto;
-  font-size: 15px;
-  font-weight: 300;
-  text-overflow: ellipsis; }
-  #address:focus, #this_is_why:focus, #sign-in:focus {
-    border-color: #4d90fe; }
+footer {
+  text-align: center;
+  background-color: #b3d1ff; }
+  footer > div {
+    padding: 1px; }
+  footer h1 {
+    margin: 130px 0 0 0;
+    font-size: 55px;
+    font-weight: bold; }
+  footer button {
+    margin-top: 60px;
+    padding: 13px;
+    border: 3px solid #fff;
+    border-radius: 10px;
+    background-color: transparent;
+    font-weight: bold; }

@@ -1,16 +1,15 @@
-'use strict';
+  'use strict';
 
 var gulp = require('gulp')
 var gutil = require('gulp-util')
 var source = require('vinyl-source-stream')
 var browserify = require('browserify')
 var rimraf = require('rimraf')
-var jsonServer = require('json-server')
-var apiServer = jsonServer.create()
-var router = jsonServer.router('db.json')
 var serve = require('gulp-serve')
 var sass = require('gulp-sass')
 var jshint = require('gulp-jshint')
+var browserSync = require('browser-sync')
+var nodemon = require('gulp-nodemon')
 
 /****************************************
   JS
@@ -56,19 +55,25 @@ gulp.task('sass', function () {
   Servers (Web and API)
 *****************************************/
 
-apiServer.use(jsonServer.defaults)
-apiServer.use(router)
-
-gulp.task('serve:api', function (cb) {
-  apiServer.listen(3000, cb)
+gulp.task('serve:web', ['nodemon'], function() {
+  browserSync.init(null, {
+    proxy: "http://localhost:3000",
+    port: 8000
+  })
 })
-
-gulp.task('serve:web', ['serve:api'], serve({
-  root: ['.'],
-  port: process.env.PORT || 8000
-}))
-
-gulp.task('serve', ['serve:api', 'serve:web'])
+gulp.task('nodemon', function (cb) {
+  
+  var started = false
+  
+  return nodemon({
+    script: 'server.js'
+  }).on('start', function () {
+    if (!started) {
+      cb()
+      started = true
+    } 
+  })
+})
 
 
 /****************************************
@@ -82,5 +87,5 @@ gulp.task('watch', ['build'], function () {
 })
 
 // Default
-gulp.task('default', ['serve', 'watch'])
+gulp.task('default', ['serve:web', 'watch'])
 

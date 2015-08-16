@@ -14,7 +14,10 @@ var User = require('../models/user')
 
 var UserCollection = Backbone.Collection.extend({
 	url: App.Settings.apiRoot + '/users',
-	model: User
+	model: User,
+	getUser: function (placeId) {
+		return this.findWhere({placeId: placeId})
+	}
 })
 
 App.Collections.user = new UserCollection
