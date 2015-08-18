@@ -10,9 +10,9 @@ var Place = require('./models/place')
 var User = require('./models/user')
 
 // why template
-var whyTemplate = require('./templates/this_is_why.hbs')
-var addressTemplate = require('./templates/address.hbs')
-var reasonTemplate = require('./templates/reason.hbs')
+	var whyTemplate = require('./templates/infowindow.hbs')
+	var addressTemplate = require('./templates/address.hbs')
+	var reasonTemplate = require('./templates/reason.hbs')
 
 
 function map() {
@@ -74,6 +74,7 @@ function map() {
 					infowindow.close()
 				}
 
+
 				var place = placeCollection.findWhere({ id: _.random(1, placeCollection.length) })
 				var user = userCollection.getUser(place.id)
 
@@ -104,6 +105,15 @@ function map() {
 
 					map.setCenter(markerPositionViewPort)
 					map.panTo(markerPositionViewPort)
+
+					var iwOuter = $('.gm-style-iw')
+					var iwBackground = iwOuter.prev()
+
+					// Remove the background shadow DIV
+					iwBackground.children(':nth-child(2)').css({'display' : 'none'})
+
+					// Remove the white background DIV
+					iwBackground.children(':nth-child(4)').css({'display' : 'none'})
 				}
 			}
 

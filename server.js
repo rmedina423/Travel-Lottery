@@ -1,5 +1,6 @@
 var express = require('express')
 var cookieParser = require('cookie-parser')
+var bodyParser = require('body-parser')
 var session = require('express-session')
 var passport = require('passport')
 var logger = require('morgan')
@@ -8,7 +9,7 @@ var GooglePlusStrategy = require('passport-google-plus')
 var app = express()
 
 var router = jsonServer.router('db.json')
-app.use('/api', router)
+app.use('/api', router) 
 
 passport.use(new GooglePlusStrategy({
     clientId: '1096081615290-9sr52j3uvur2it35urgo487gcvl3vikv.apps.googleusercontent.com',
@@ -33,6 +34,7 @@ passport.deserializeUser(function(user, done) {
 app.use(logger('dev'))
 app.use(express.static(__dirname));
 app.use(cookieParser());
+app.use(bodyParser());
 app.use(session({ secret: 'thisismysecret' }));
 app.use(passport.initialize());
 app.use(passport.session());
@@ -46,14 +48,15 @@ app.use(function(req, res, next) {
 app.get('/auth/google',
   passport.authenticate('google', { scope: [ 'user:email' ] }));
 
-app.get('/auth/google/callback', 
+app.post('/auth/google/callback', 
   passport.authenticate('google', { failureRedirect: '/login' }),
   function(req, res) {
     // Successful authentication, redirect home.
-    console.log(req.user)
-    res.redirect('/');
+    res.json(req.user);
   });
 
+
+// request data
 app.get('/auth/google/profile', function (req, res) {
 	res.json(req.user)
 })

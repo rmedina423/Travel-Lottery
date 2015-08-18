@@ -15,11 +15,6 @@ html {
     font: inherit;
 }
 
-/****************************************
-  Defaults
-*****************************************/
-
-
 
 /****************************************
   Primary Layout
@@ -32,59 +27,179 @@ html, body, #map {
 	background-color: #b3d1ff; 
 }
 
-// #map {
-// 	margin-top: 20px;
-// 	margin-left: 20px;
-// 	margin-right: 20px;
-// }
+main {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+}
 
-#primary-message, .tiles {
-	// background-color: red;
-	height: 100vh;
+#mission-statement {
+	min-height: 105vh;
 	padding: 1px;
-}
 
-#primary-message > div {
-	width: 900px;
-	margin: auto;
-	margin-top: 175px;
-}
-
-.platforms > div {
-	height: 400px;
-	margin: auto;
-	width: 960px;
-
-	i {
-		margin-top: 140px;
+	> div {
+		max-width: 900px;
+		margin: auto;
+		margin-top: 8%;
+		padding: 9px;
 	}
 }
 
-footer {
-	height: 500px;
+.tiles > div{
+	min-height: 105vh;
+	padding: 1px;
+}
+
+.primary-footer {
+	min-height: 400px;
 }
 /****************************************
 Components
 *****************************************/
 
-#contributions {
-	position: absolute;
+#iw-container  .iw-title {
+	font-family: 'Open Sans Condensed', sans-serif;
+	font-size: 22px;
+	font-weight: 400;
+	padding: 10px;
+	background-color: #48b5e9;
+	margin: 0;
+	border-radius: 2px 2px 0 0;
+}
+
+#iw-container {
+	.iw-title {
+		text-align: center;
+		width: 215px;
+	}
+
+	p {
+		margin: 0;
+		padding: 6px 10px;
+		color: #000;
+	}
+}
+
+
+.gm-style-iw {
+	width: 215px !important;
+	top: 0 !important;
+	left: 0 !important;
+	background-color: #fff;
+	box-shadow: 0 1px 6px rgba(178, 178, 178, 0.6);
+	border: 1px solid rgba(72, 181, 233, 0.6);
+	border-radius: 2px 2px 0 0;
+}
+
+.lightbox {
+	width: 600px;
+	height: 400px;
+	position: fixed;
 	top: 50%;
 	left: 50%;
+	transform: translate(-50%, -50%);
+	z-index: 1;
+	background-color: #79CD71;
+	text-align: center;
+	padding: 20px;
+	border: 2px solid #f4eecb;	
+	border-radius: 10px;
+
+	h1 {
+		font-size: 40px;
+		font-weight: bold;
+		margin-top: 0;
+	}
+
+	.close {
+		position: absolute;
+		top: 10px;
+		right: 10px;
+		font-weight: bold;
+		cursor: pointer;
+	}
+
+	.buttons {
+		text-align: center;
+		margin-top: 90px;
+	}
+
+	span.divider {
+		display: inline-block;
+		margin: 0 10px;
+		font-size: 24px;
+		font-weight: bold;
+	}
+
+}
+
+#signinButton, button {
+	display: inline-block;
+	padding: 13px;
+	border: 3px solid #f4eecb;
+	border-radius: 10px;
+	background-color: #79CD71;;
+	font-weight: bold;
+	width: 225px;
+	cursor: pointer;
+}
+
+.primary-button {
+	position: absolute;
+	left: 50%;
+	top: 545px;
 	transform: translateX(-50%);
 	text-align: center;
+}
+
+.primary-header {
 	width: 100%;
+	min-height: 50px;
+	background-color: #5191FF;
+	box-shadow: 0 0 10px -4px black;
+	border-bottom: 3px solid #fff;
+
+	.logo {
+		display: inline-block;
+		margin-top: 4px;
+		margin-left: 4%;
+		font-weight: bolder;
+		font-size: 28px;
+	}
+
+	nav {
+		display: inline-block;
+		// margin-left: 30%;
+		position: absolute;
+		top: 10px;
+		right: 3%;
+	}
+
+	a {
+		padding: 14px;
+		font-size: 20px;
+		text-decoration: none;
+		font-weight: bold;
+	}
+}
+
+#contributions {
+	margin-top: 50vh;
+	margin-bottom: 38vh;
+	text-align: center;
 	font-size: 60px;
 	color: white;
-	background-color: #DFE9C9;
+	background-color: #79CD71;;
 	text-shadow: 1px 1px 5px rgba(150, 150, 150, 1);
-	border: 2px solid #b7d7b4;;
+	border: 2px solid #f4eecb;
 
 	span {
 		font-weight: bold;
 	}
 
 }
+
 
 // #geocoding_form, #why, #signinButton, .show-more {
 // 	position: absolute;
@@ -126,11 +241,12 @@ Components
 // 	}
 // }
 
-#primary-message {
+#mission-statement {
 	text-align: center;
 	margin: auto;
-	background-color: #b3d1ff;
+	background-color: #5191FF;
 	color: #fff;
+	font-weight: 500;
 
 	h1 {
 		font-size: 50px;
@@ -155,26 +271,29 @@ Components
 .tiles {
 	text-align: center;
 	font-family: 'Quicksand', sans-serif;
-	background-color: #DFE9C9;
+	background-color: #79CD71;;
 	color: #fff;
+	font-weight: 500;
 
 	header{
-		margin-top: 80px;
 		font-size: 50px;
+		margin-top: 60px;
+		padding: 0 10px;
 	}
 	h6 {
 		font-size: 19px;
 		margin: 30px 0 55px 0;
+		padding: 0 10px;
 	}
 
 	.icon {
-		color: #C0E0BB;
+		color: #F5E794;
 		text-decoration: none;
 	}
 
 	i {
-		font-size: 23;
-		color: #f8f3da;
+		font-size: 23px;
+		color: #F5E794;
 	}
 
 }
@@ -182,7 +301,7 @@ Components
 .tile {
 	display: inline-block;
 	width: 260px;
-	margin-left: 45px;
+	margin: 25px 23px 25px 23px;
 
 	h3 {
 		font-size: 22px;
@@ -195,32 +314,25 @@ Components
 	}
 
 	i {
-		color: #f4eecb;
+		color: #F5E794;
 		font-size: 90px;
 		text-shadow: 1px 1px 5px rgba(150, 150, 150, 1);
 	}
 }
 
-footer {
+.primary-footer {
 	text-align: center;
-	background-color: #b3d1ff;
-
-	> div {
+	background-color: #5191FF;
 	padding: 1px;
-	}
 
 	h1 {
-		margin: 130px 0 0 0;
+		margin: 90px 0 25px 0;
 		font-size: 55px;
 		font-weight: bold;
 	}
 
 	button {
-		margin-top: 60px;
-		padding: 13px;
-		border: 3px solid #fff;
-		border-radius: 10px;
+		border-color: #fff;
 		background-color: transparent;
-		font-weight: bold;
 	}
 }

@@ -17,6 +17,6 @@ App.Models.User = Backbone.Model.extend({
     if (this.isNew()) return base
     return base + '/' + this.id
   }
-});
+})
 
 module.exports = App.Models.User

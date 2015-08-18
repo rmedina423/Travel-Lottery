@@ -9,34 +9,38 @@ var App = require('../app')
 var Place = require('../models/place')
 var User = require('../models/user')
 
-// why template
-var whyTemplate = require('../templates/this_is_why.hbs')
-// var addressTemplate = require('../templates/address.hbs')
-var reasonTemplate = require('../templates/reason.hbs')
+// Templates
+var mainTemplate = require('../templates/main.hbs')
+var aboutTemplate = require('../templates/about.hbs')
+var headerTemplate = require('../templates/header.hbs')
+var signInTemplate = require('../templates/sign-in.hbs')
 var learnMoreTemplate = require('../templates/learn-more.hbs')
-var whatWeDoTemplate = require('../templates/whatWeDo.hbs')
-var wahtWeDo2Template = require('../templates/whatWeDo(part2).hbs')
+var missionTemplate = require('../templates/mission.hbs')
+var howItWorks = require('../templates/howItWorks.hbs')
 var contTemplate = require('../templates/contributions.hbs')
+var footerTemplate = require('../templates/footer.hbs')
 
 var LandingPage = Backbone.View.extend({
 
 	el: 'body',
 
 	render: function () {
-		// this.$el.append(learnMoreTemplate())
-		this.$el.append(contTemplate())
-		this.$el.append(whatWeDoTemplate())
-		this.$el.append(wahtWeDo2Template())
+		var templates = {
+			header: headerTemplate(),
+			contributions: contTemplate(),
+			primary: {
+				part1: missionTemplate(),
+				part2:howItWorks()
+			},
+			footer: footerTemplate()
+		}
+
+		this.$el.append(mainTemplate(templates))
+
+		$('.lightbox').on('click', function () {
+			$(this).remove()
+		})
 	},
-
-	// events: {
- //    "click a.learn-details i": "scrollDown"
-	// },
-
-	// scrollDown: function () {
-	// 	this.$el.append(wahtWeDo2Template())
-	// 	$('a.learn-details').removeClass('learn-details')
-	// }
 
 })
 
