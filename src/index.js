@@ -16,14 +16,15 @@ App.Views.landingPage = new LandingPage
 var SignIn = require('./views/sign-in')
 App.Views.signIn = new SignIn
 
+// View: Process
+var Process = require('./views/process.js')
+App.Views.process = new Process
 
-var Map = require('./map')
-var map = new Map
+// View: User Profile
+var UserProfile = require('./views/user-page')
+App.Views.userProfile = new UserProfile
 
 
-//View: where-why
-// var WhereWhy = require('./views/where-why')
-// App.Views.whereWhy = new WhereWhy
 
 // App Router
 App.Router = Backbone.Router.extend({
@@ -31,6 +32,8 @@ App.Router = Backbone.Router.extend({
   // Route definitions
   routes: {
     '': 'index',
+    'userprofile(/)': 'userProfile',
+    'process(/)': 'process',
     '*actions': 'defaultRoute'
   },
 
@@ -38,7 +41,15 @@ App.Router = Backbone.Router.extend({
 
   index: function() {
     App.Views.landingPage.render()
-    App.Views.signIn.render()
+    // App.Views.signIn.render()
+  },
+
+  process: function() {
+    App.Views.process.render()
+  },
+
+  userProfile: function() {
+    App.Views.userProfile.render()
   },
 
   defaultRoute: function(actions) {

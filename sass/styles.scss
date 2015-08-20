@@ -1,11 +1,16 @@
 /****************************************
+  Vars
+*****************************************/
+
+$header-height: 50px;
+
+/****************************************
   Inherited Syles
 *****************************************/
 
 html {
     box-sizing: border-box;
     color: white;
-    // font-weight: 300;
 	font-family: 'Quicksand', sans-serif;
 }
 
@@ -21,17 +26,15 @@ html {
 *****************************************/
 
 html, body, #map {
-	height: 100%;
+	height: 100vh;
+	// width: 100vw;
 	margin: 0;
 	padding: 0;
-	background-color: #b3d1ff; 
+	background-color: #5191FF; 
 }
 
 main {
-	position: absolute;
-	top: 0;
-	left: 0;
-	right: 0;
+	margin-top: $header-height
 }
 
 #mission-statement {
@@ -134,7 +137,7 @@ Components
 
 }
 
-#signinButton, button {
+footer span, button, .show-more {
 	display: inline-block;
 	padding: 13px;
 	border: 3px solid #f4eecb;
@@ -145,27 +148,47 @@ Components
 	cursor: pointer;
 }
 
-.primary-button {
+.g-signin {
+	cursor: pointer;
+}
+
+
+.show-more {
 	position: absolute;
 	left: 50%;
 	top: 545px;
 	transform: translateX(-50%);
 	text-align: center;
+	text-decoration: none;
 }
 
 .primary-header {
+	position: absolute;
+	top: 0;
 	width: 100%;
-	min-height: 50px;
+	z-index: 1;
+	height: $header-height;
 	background-color: #5191FF;
 	box-shadow: 0 0 10px -4px black;
 	border-bottom: 3px solid #fff;
 
 	.logo {
-		display: inline-block;
-		margin-top: 4px;
 		margin-left: 4%;
 		font-weight: bolder;
 		font-size: 28px;
+	}
+
+	#loggedInUser {
+		display: inline-block;
+		margin-left: 20px;
+		font-weight: bold;
+		font-size: 20px;
+
+		.user {
+			border-bottom: 2px solid #fff;
+			padding: 0;
+			padding-bottom: 2px;
+		}
 	}
 
 	nav {
@@ -185,14 +208,17 @@ Components
 }
 
 #contributions {
-	margin-top: 50vh;
-	margin-bottom: 38vh;
+	position: absolute;
+	top: 365px;
+	width: 100%;
 	text-align: center;
 	font-size: 60px;
 	color: white;
 	background-color: #79CD71;;
 	text-shadow: 1px 1px 5px rgba(150, 150, 150, 1);
 	border: 2px solid #f4eecb;
+	border-right: none;
+	border-left: none;
 
 	span {
 		font-weight: bold;
@@ -201,45 +227,46 @@ Components
 }
 
 
-// #geocoding_form, #why, #signinButton, .show-more {
-// 	position: absolute;
-// 	text-align: center;
-// 	top: 70%;
-// 	left: 50%;
-// 	transform: translateX(-50%);
-// }
+#geocoding_form, #why/* , #signinButton */ {
+	position: absolute;
+	text-align: center;
+	top: 70%;
+	left: 50%;
+	transform: translateX(-50%);
+	color: black;
+}
 
 // .show-more {
 // 	top: 90%;
 // }
 
-// form label {
-// 	font-family: Roboto;
-// 	font-size: 25px;
-// }
+form label {
+	font-family: Roboto;
+	font-size: 25px;
+}
 
-// #address, #this_is_why, #signinButton {
-// 	display: block;
-// 	box-sizing: border-box;
-// 	width: 400px;
-// 	height: 32px;
-// 	margin-top: 10px;
-// 	padding: 0 11px 0 13px;
-// 	border: 1px solid transparent;
-// 	border-radius: 2px 0 0 2px;
-// 	-moz-box-sizing: border-box;
-// 	outline: none;
-// 	box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
-	// background-color: #fff;
-// 	font-family: Roboto;
-// 	font-size: 15px;
-// 	font-weight: 300;
-// 	text-overflow: ellipsis;
+#address, #this_is_why/* , #signinButton */ {
+	display: block;
+	box-sizing: border-box;
+	width: 400px;
+	height: 32px;
+	margin-top: 10px;
+	padding: 0 11px 0 13px;
+	border: 1px solid transparent;
+	border-radius: 2px 0 0 2px;
+	-moz-box-sizing: border-box;
+	outline: none;
+	box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+	background-color: #fff;
+	font-family: Roboto;
+	font-size: 15px;
+	font-weight: 300;
+	text-overflow: ellipsis;
 
-// 	&:focus {
-// 		border-color: #4d90fe;
-// 	}
-// }
+	&:focus {
+		border-color: #4d90fe;
+	}
+}
 
 #mission-statement {
 	text-align: center;
@@ -331,8 +358,130 @@ Components
 		font-weight: bold;
 	}
 
-	button {
+	span {
 		border-color: #fff;
 		background-color: transparent;
+	}
+}
+
+#userProfile > div {
+	max-width: 960px;
+	margin: auto;
+	display: flex;
+	min-height: 660px;
+}
+
+aside, section {
+	margin-top: 20px;
+}
+
+aside {
+	// background-color: green;
+	flex: 1;
+
+	> div:first-child {
+		min-height: 500px;
+		width: 100%;
+		background-color: pink;
+	}
+
+	> div:last-child {
+		min-height: 160px;
+		width: 100%;
+		margin-top: 20px;
+		background-color: orange
+	}
+}
+
+aside {
+	.user-image {
+		height: 250px;
+		width: 100%;
+		background-color: green;
+	}
+}
+
+section {
+	// background-color: lime;
+	flex: 2;
+	margin-left: 25px;
+
+	> div:first-child {
+		min-height: 250px;
+		width: 100%;
+		background-color: red;
+	}
+
+	> div:last-child {
+		min-height: 410px;
+		width: 100%;
+		margin-top: 15px;
+		background-color: black;
+	}
+}
+
+#payment {
+	background-color: red;
+	width: 530px;
+	height: 430px;
+	padding: 1px 35px 0 35px;
+
+	h1, h2 {
+		font-size: 25px;
+		background-color: pink;
+	}
+	h2 {
+		margin: 0;
+		height: 60px;
+		padding-top: 15px;
+	}
+
+	label {
+		font-size: 20px;
+		background-color: lime;
+	}
+	input {
+		border-radius: 6px;
+		margin-top: 3px;
+	}
+	span {
+		background-color: pink;
+		display: block;
+		margin: auto;
+		width: 80%;
+		text-align: center;
+		height: 45px;
+		margin-top: 20px;
+	}
+}
+
+.card-image {
+	background-color: grey;
+	padding: 1px 10px 15px 10px;
+}
+
+.card-image .container{
+	display: flex;
+	margin: 10px 0 15px 0;
+	
+	div input, label {
+		width: 100%;
+	}
+
+	div:first-child {
+		flex: 7;
+		margin-right: 14px;
+	}
+	div:last-child {
+		flex: 2;
+	}
+}
+
+.card-image div:last-child {
+	label {
+		display: block;
+	}
+	input[name="expire-data"] {
+		width: 110px;
 	}
 }

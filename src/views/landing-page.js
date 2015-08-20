@@ -5,41 +5,36 @@ var _ = require('lodash')
 // App
 var App = require('../app')
 
-// Models
-var Place = require('../models/place')
-var User = require('../models/user')
+// map.js
+var map = require('../map')
 
 // Templates
-var mainTemplate = require('../templates/main.hbs')
-var aboutTemplate = require('../templates/about.hbs')
-var headerTemplate = require('../templates/header.hbs')
+var mapTemplate = require('../templates/map.hbs')
 var signInTemplate = require('../templates/sign-in.hbs')
-var learnMoreTemplate = require('../templates/learn-more.hbs')
 var missionTemplate = require('../templates/mission.hbs')
-var howItWorks = require('../templates/howItWorks.hbs')
+var howItWorksTemplate = require('../templates/howItWorks.hbs')
 var contTemplate = require('../templates/contributions.hbs')
 var footerTemplate = require('../templates/footer.hbs')
+var paymentTemplate = require('../templates/payment.hbs')
 
 var LandingPage = Backbone.View.extend({
 
-	el: 'body',
+	el: 'main',
 
 	render: function () {
-		var templates = {
-			header: headerTemplate(),
-			contributions: contTemplate(),
-			primary: {
-				part1: missionTemplate(),
-				part2:howItWorks()
-			},
-			footer: footerTemplate()
-		}
 
-		this.$el.append(mainTemplate(templates))
+		this.$el.html(
+			mapTemplate()+
+			paymentTemplate()+ 
+			contTemplate()+ 
+			missionTemplate()+ 
+			howItWorksTemplate()+ 
+			footerTemplate()+ 
+			signInTemplate()
+		)
 
-		$('.lightbox').on('click', function () {
-			$(this).remove()
-		})
+
+		map(this.$el.find('#map')[0])
 	},
 
 })

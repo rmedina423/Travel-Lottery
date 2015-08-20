@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Ryan's Resume</title>
+  <title>FlyingChance</title>
   <link rel="stylesheet" href="css/styles.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="css/animate.css">
@@ -13,7 +13,32 @@
 </head>
 <body>
 
-	<div id="map"></div>
+  <header class="primary-header">
+    <a href="/#" class="logo">FlyingChance</a>
+    <div id="loggedInUser">
+      <div id="signinButton">
+        <span class="g-signin"
+          data-scope="https://www.googleapis.com/auth/plus.profile.emails.read"
+          data-clientid="1096081615290-9sr52j3uvur2it35urgo487gcvl3vikv.apps.googleusercontent.com"
+          data-redirecturi="/auth/google/callback"
+          data-accesstype="offline"
+          data-cookiepolicy="single_host_origin"
+          data-callback="signInCallback">
+          Sign in with Google+
+        </span>
+      </div>
+    </div>
+    <nav class="primary-nav">
+      <a href="/#">Home</a>
+      <a href="#">About</a>
+      <a href="#">Membership</a>
+      <a href="#">Testimonials</a>
+      <a href="#">FAQ</a>
+    </nav>
+  </header>
+
+  <main>
+  </main>
 
  <script src="build/bundle.js"></script>
 </body>

@@ -1,4 +1,7 @@
 /****************************************
+  Vars
+*****************************************/
+/****************************************
   Inherited Syles
 *****************************************/
 html {
@@ -15,16 +18,13 @@ html {
   Primary Layout
 *****************************************/
 html, body, #map {
-  height: 100%;
+  height: 100vh;
   margin: 0;
   padding: 0;
-  background-color: #b3d1ff; }
+  background-color: #5191FF; }
 
 main {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0; }
+  margin-top: 50px; }
 
 #mission-statement {
   min-height: 105vh;
@@ -104,7 +104,7 @@ Components
     font-size: 24px;
     font-weight: bold; }
 
-#signinButton, button {
+footer span, button, .show-more {
   display: inline-block;
   padding: 13px;
   border: 3px solid #f4eecb;
@@ -114,25 +114,39 @@ Components
   width: 225px;
   cursor: pointer; }
 
-.primary-button {
+.g-signin {
+  cursor: pointer; }
+
+.show-more {
   position: absolute;
   left: 50%;
   top: 545px;
   transform: translateX(-50%);
-  text-align: center; }
+  text-align: center;
+  text-decoration: none; }
 
 .primary-header {
+  position: absolute;
+  top: 0;
   width: 100%;
-  min-height: 50px;
+  z-index: 1;
+  height: 50px;
   background-color: #5191FF;
   box-shadow: 0 0 10px -4px black;
   border-bottom: 3px solid #fff; }
   .primary-header .logo {
-    display: inline-block;
-    margin-top: 4px;
     margin-left: 4%;
     font-weight: bolder;
     font-size: 28px; }
+  .primary-header #loggedInUser {
+    display: inline-block;
+    margin-left: 20px;
+    font-weight: bold;
+    font-size: 20px; }
+    .primary-header #loggedInUser .user {
+      border-bottom: 2px solid #fff;
+      padding: 0;
+      padding-bottom: 2px; }
   .primary-header nav {
     display: inline-block;
     position: absolute;
@@ -145,16 +159,51 @@ Components
     font-weight: bold; }
 
 #contributions {
-  margin-top: 50vh;
-  margin-bottom: 38vh;
+  position: absolute;
+  top: 365px;
+  width: 100%;
   text-align: center;
   font-size: 60px;
   color: white;
   background-color: #79CD71;
   text-shadow: 1px 1px 5px #969696;
-  border: 2px solid #f4eecb; }
+  border: 2px solid #f4eecb;
+  border-right: none;
+  border-left: none; }
   #contributions span {
     font-weight: bold; }
+
+#geocoding_form, #why {
+  position: absolute;
+  text-align: center;
+  top: 70%;
+  left: 50%;
+  transform: translateX(-50%);
+  color: black; }
+
+form label {
+  font-family: Roboto;
+  font-size: 25px; }
+
+#address, #this_is_why {
+  display: block;
+  box-sizing: border-box;
+  width: 400px;
+  height: 32px;
+  margin-top: 10px;
+  padding: 0 11px 0 13px;
+  border: 1px solid transparent;
+  border-radius: 2px 0 0 2px;
+  -moz-box-sizing: border-box;
+  outline: none;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+  background-color: #fff;
+  font-family: Roboto;
+  font-size: 15px;
+  font-weight: 300;
+  text-overflow: ellipsis; }
+  #address:focus, #this_is_why:focus {
+    border-color: #4d90fe; }
 
 #mission-statement {
   text-align: center;
@@ -219,6 +268,93 @@ Components
     margin: 90px 0 25px 0;
     font-size: 55px;
     font-weight: bold; }
-  .primary-footer button {
+  .primary-footer span {
     border-color: #fff;
     background-color: transparent; }
+
+#userProfile > div {
+  max-width: 960px;
+  margin: auto;
+  display: flex;
+  min-height: 660px; }
+
+aside, section {
+  margin-top: 20px; }
+
+aside {
+  flex: 1; }
+  aside > div:first-child {
+    min-height: 500px;
+    width: 100%;
+    background-color: pink; }
+  aside > div:last-child {
+    min-height: 160px;
+    width: 100%;
+    margin-top: 20px;
+    background-color: orange; }
+
+aside .user-image {
+  height: 250px;
+  width: 100%;
+  background-color: green; }
+
+section {
+  flex: 2;
+  margin-left: 25px; }
+  section > div:first-child {
+    min-height: 250px;
+    width: 100%;
+    background-color: red; }
+  section > div:last-child {
+    min-height: 410px;
+    width: 100%;
+    margin-top: 15px;
+    background-color: black; }
+
+#payment {
+  background-color: red;
+  width: 530px;
+  height: 430px;
+  padding: 1px 35px 0 35px; }
+  #payment h1, #payment h2 {
+    font-size: 25px;
+    background-color: pink; }
+  #payment h2 {
+    margin: 0;
+    height: 60px;
+    padding-top: 15px; }
+  #payment label {
+    font-size: 20px;
+    background-color: lime; }
+  #payment input {
+    border-radius: 6px;
+    margin-top: 3px; }
+  #payment span {
+    background-color: pink;
+    display: block;
+    margin: auto;
+    width: 80%;
+    text-align: center;
+    height: 45px;
+    margin-top: 20px; }
+
+.card-image {
+  background-color: grey;
+  padding: 1px 10px 15px 10px; }
+
+.card-image .container {
+  display: flex;
+  margin: 10px 0 15px 0; }
+  .card-image .container div input, .card-image .container label {
+    width: 100%; }
+  .card-image .container div:first-child {
+    flex: 7;
+    margin-right: 14px; }
+  .card-image .container div:last-child {
+    flex: 2; }
+
+.card-image div:last-child label {
+  display: block; }
+
+.card-image div:last-child input[name="expire-data"] {
+  width: 110px; }
