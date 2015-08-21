@@ -23,7 +23,6 @@ var paymentTemplate = require('../templates/payment.hbs')
 // Collections GO BACK and put this into the VIEW
 var userCollection = App.Collections.user
 var placeCollection = App.Collections.place
-var markers = []
 
 // Current User
 var getUserInfo = $.get('/auth/google/profile')
@@ -35,8 +34,7 @@ var Process = Backbone.View.extend({
 
 		this.$el.html(
 			mapTemplate()+ 
-			searchTemplate()+
-			contTemplate()
+			searchTemplate()
 		)
 
 		$('.show-more').hide()
@@ -67,7 +65,7 @@ var Process = Backbone.View.extend({
 					return
 				}
 
-				var img = userLoggedIn.image.url
+				var img = userLoggedIn.photos[0].value
 
 				var marker = new google.maps.Marker({
 					map: App.map,
@@ -76,6 +74,8 @@ var Process = Backbone.View.extend({
 					position: position,
 					animation: google.maps.Animation.DROP
 				})
+
+				_this.marker = marker
 
 				$('main').append(whyTemplate({destination: name}))
 
@@ -91,8 +91,6 @@ var Process = Backbone.View.extend({
 					var place = new Place(placeData)
 					placeCollection.add(place)
 					place.save()
-
-					markers.push(marker)
 				}
 
 				bounds.extend(marker.position)
@@ -118,41 +116,29 @@ var Process = Backbone.View.extend({
 
 		var msg = $('#this_is_why').val()
 
-		var centerOfMap = App.map.getCenter()
-
 		currentPlace = placeCollection.findWhere({
 			lat: this.position.G,
 			lng: this.position.K
 		})
 
 		var currentUser = userCollection.findWhere({
-			email: this.userLoggedIn.email,
+			// email: this.userLoggedIn.email,
 			displayName: this.userLoggedIn.displayName
 		})
 
 		currentUser.save({msg: msg, placeId: currentPlace.id})
 
-		markers.forEach(function (placeMarker) {
-			var place = placeCollection.findWhere({
-				lat: placeMarker.position.G,
-				lng: placeMarker.position.K
-			})
-			
-			var placeId = place.get('id')
-			var match = userCollection.findWhere({placeId: placeId})
-
-			if (!match) {
-				place.destroy()
-			}
-			
-			var lastPlaceModel = placeCollection.findWhere({
-				lat: _.last(markers).position.G,
-				lng: _.last(markers).position.K
-			})
-
-			lastPlaceModel.set({id: userCollection.length})
-			lastPlaceModel.save()
+		var place = placeCollection.findWhere({
+			lat: this.marker.position.G,
+			lng: this.marker.position.K
 		})
+		
+		var placeId = place.get('id')
+		var match = userCollection.findWhere({placeId: placeId})
+
+		if (!match) {
+			place.destroy()
+		}
 
 		var data = {
 			name: this.userLoggedIn.displayName,
@@ -163,9 +149,9 @@ var Process = Backbone.View.extend({
 			content: infowWindowTemplate(data)
 		})
 
-		var lastMarker = _.last(markers)
+		infowindow.open(map, this.marker)
 
-		infowindow.open(map, lastMarker)
+		console.log(infowindow)
 
 		$('#why').css('display', 'none')
 
@@ -173,16 +159,16 @@ var Process = Backbone.View.extend({
 		App.Settings.rotateMap = true
 		App.map.setOptions({draggable: true})
 
-		// var iwOuter = $('.gm-style-iw')
-		// var iwBackground = iwOuter.prev()
+		var iwOuter = $('.gm-style-iw')
+		var iwBackground = iwOuter.prev()
 
-		// // Remove the background shadow DIV
-		// iwBackground.children(':nth-child(2)').css({'display' : 'none'})
+		// Remove the background shadow DIV
+		iwBackground.children(':nth-child(2)').css({'display' : 'none'})
 
-		// // Remove the white background DIV
-		// iwBackground.children(':nth-child(4)').css({'display' : 'none'})
+		// Remove the white background DIV
+		iwBackground.children(':nth-child(4)').css({'display' : 'none'})
+		this.$el.append(paymentTemplate())
 		// App.router.navigate('/', { trigger: true })
-		// this.$el.append(paymentTemplate())
 	}
 })
 

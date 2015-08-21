@@ -25,14 +25,11 @@ var LandingPage = Backbone.View.extend({
 
 		this.$el.html(
 			mapTemplate()+
-			paymentTemplate()+ 
 			contTemplate()+ 
 			missionTemplate()+ 
 			howItWorksTemplate()+ 
-			footerTemplate()+ 
-			signInTemplate()
+			footerTemplate()
 		)
-
 
 		map(this.$el.find('#map')[0])
 	},

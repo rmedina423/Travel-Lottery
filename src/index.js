@@ -12,10 +12,6 @@ var userCollection = require('./collections/user')
 var LandingPage = require('./views/landing-page')
 App.Views.landingPage = new LandingPage
 
-// View: Sign in
-var SignIn = require('./views/sign-in')
-App.Views.signIn = new SignIn
-
 // View: Process
 var Process = require('./views/process.js')
 App.Views.process = new Process
@@ -23,6 +19,8 @@ App.Views.process = new Process
 // View: User Profile
 var UserProfile = require('./views/user-page')
 App.Views.userProfile = new UserProfile
+
+var loggedInUserTemplate = require('./templates/logged-in-user.hbs')
 
 
 
@@ -41,7 +39,6 @@ App.Router = Backbone.Router.extend({
 
   index: function() {
     App.Views.landingPage.render()
-    // App.Views.signIn.render()
   },
 
   process: function() {
@@ -61,3 +58,11 @@ App.Router = Backbone.Router.extend({
 App.router = new App.Router;
 
 Backbone.history.start();
+
+$.get('/auth/google/profile').done(function (user) {
+  console.log('logged in! :)')
+  $('#loggedInUser').html(loggedInUserTemplate({user: user.displayName}))
+  $('#signinButton').hide()
+}).fail(function () {
+  console.log('not logged in :(')
+})

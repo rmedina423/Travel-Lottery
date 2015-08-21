@@ -137,7 +137,7 @@ Components
 
 }
 
-footer span, button, .show-more {
+footer span, button, .show-more, .btn, #signinButton {
 	display: inline-block;
 	padding: 13px;
 	border: 3px solid #f4eecb;
@@ -146,6 +146,10 @@ footer span, button, .show-more {
 	font-weight: bold;
 	width: 225px;
 	cursor: pointer;
+	
+	a {
+		text-decoration: none;
+	}
 }
 
 .g-signin {
@@ -214,7 +218,7 @@ footer span, button, .show-more {
 	text-align: center;
 	font-size: 60px;
 	color: white;
-	background-color: #79CD71;;
+	background-color: #79CD71;
 	text-shadow: 1px 1px 5px rgba(150, 150, 150, 1);
 	border: 2px solid #f4eecb;
 	border-right: none;
@@ -226,29 +230,39 @@ footer span, button, .show-more {
 
 }
 
+.cover {
+	position: absolute;
+	top: $header-height;
+	background: radial-gradient(rgba(0, 142, 168, 0), rgba(81, 145, 255, 0.4));
+	height: 100vh;
+	width: 100%;
+}
+
 
 #geocoding_form, #why/* , #signinButton */ {
 	position: absolute;
 	text-align: center;
-	top: 70%;
+	top: 35%;
 	left: 50%;
 	transform: translateX(-50%);
 	color: black;
+	z-index: 1;
 }
 
-// .show-more {
-// 	top: 90%;
-// }
+.btn {
+	font-size: 20px;
+	color: #fff;
+}
 
 form label {
 	font-family: Roboto;
-	font-size: 25px;
+	font-size: 60px;
 }
 
-#address, #this_is_why/* , #signinButton */ {
+#address, #this_is_why {
 	display: block;
 	box-sizing: border-box;
-	width: 400px;
+	width: 570px;
 	height: 32px;
 	margin-top: 10px;
 	padding: 0 11px 0 13px;
@@ -421,48 +435,68 @@ section {
 }
 
 #payment {
-	background-color: red;
+	background-color: #79CD71;
 	width: 530px;
 	height: 430px;
 	padding: 1px 35px 0 35px;
 
 	h1, h2 {
 		font-size: 25px;
-		background-color: pink;
+		// background-color: pink;
+	}
+	h1 {
+		padding: 0 10px 0 15px;
+	}
+	i {
+		margin-right: 10px;
 	}
 	h2 {
 		margin: 0;
 		height: 60px;
 		padding-top: 15px;
+		border-bottom: 2px solid #f4eecb;
 	}
 
 	label {
-		font-size: 20px;
-		background-color: lime;
+		font-size: 16px;
+		// background-color: lime;
 	}
 	input {
 		border-radius: 6px;
 		margin-top: 3px;
 	}
 	span {
-		background-color: pink;
+		// background-color: pink;
 		display: block;
 		margin: auto;
 		width: 80%;
 		text-align: center;
 		height: 45px;
 		margin-top: 20px;
+		font-size: 20px;
+		padding-top: 8px;
+		border: 2px solid #f4eecb;
+		border-radius: 6px;
 	}
 }
 
 .card-image {
 	background-color: grey;
 	padding: 1px 10px 15px 10px;
+	margin-top: 5px;
+	border: 2px solid #f4eecb;
+	border-radius: 8px;
+
+	.fa-cc-mastercard {
+		margin-left: 60px;
+	}
 }
 
 .card-image .container{
 	display: flex;
 	margin: 10px 0 15px 0;
+	padding-bottom: 15px;
+	border-bottom: 2px solid #f4eecb;
 	
 	div input, label {
 		width: 100%;
@@ -475,13 +509,28 @@ section {
 	div:last-child {
 		flex: 2;
 	}
+
 }
 
 .card-image div:last-child {
+	position: relative;
 	label {
 		display: block;
 	}
 	input[name="expire-data"] {
 		width: 110px;
 	}
+
+	p {
+		position: absolute;
+		right: 10px;
+		bottom: -8px;
+		margin: 0;
+	}
+
+	i {
+		font-size: 48px;
+		margin-left: 10px;
+	}
+
 }
