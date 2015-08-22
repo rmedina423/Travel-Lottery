@@ -13,12 +13,26 @@ var User = require('./models/user')
 var whyTemplate = require('./templates/infowindow.hbs')
 var addressTemplate = require('./templates/search.hbs')
 
+var iwOuter = $('.gm-style-iw')
+var iwBackground = iwOuter.prev()
+iwOuter.next().hide();
+
+iwBackground.children(':nth-child(2)').css({'display' : 'none'})
+iwBackground.children(':nth-child(4)').css({'display' : 'none'})
+
 
 var map = function(mapEl) {
 	var userCollection = App.Collections.user
 	var placeCollection = App.Collections.place
 	var markers = []
 	var infowindow
+
+	var iwOuter = $('.gm-style-iw')
+	var iwBackground = iwOuter.prev()
+	iwOuter.next().hide();
+
+	iwBackground.children(':nth-child(2)').css({'display' : 'none'})
+	iwBackground.children(':nth-child(4)').css({'display' : 'none'})
 
 	userCollection.fetch()
 
@@ -51,18 +65,21 @@ var map = function(mapEl) {
 		})
 	})
 
-	var x = 0
+	var indexNumber = 0
 	setInterval(function () {
-		var y = x++
-		var z = placeCollection.models[y]
-		console.log(z.get('name'))
+		var counter = indexNumber++
+
+		if (counter === placeCollection.length-1) {
+			indexNumber = 0
+		}
+
 		if (App.Settings.rotateMap) {
 
 			if (infowindow) {
 				infowindow.close()
 			}
 
-			var place = placeCollection.findWhere({ id: _.random(1, placeCollection.length) })
+			var place = placeCollection.models[counter]
 			var user = userCollection.getUser(place.id)
 
 			if (user) {
@@ -88,7 +105,7 @@ var map = function(mapEl) {
 				infowindow = new google.maps.InfoWindow({
 					content: whyTemplate(userInfo)
 				})
-
+				// console.log(infowindow)
 				infowindow.open(map, marker)
 
 				map.setCenter(markerPositionViewPort)
@@ -103,7 +120,14 @@ var map = function(mapEl) {
 			}
 		}
 
-	}, 3000)
+	}, 4000)
 }
+
+var iwOuter = $('.gm-style-iw')
+var iwBackground = iwOuter.prev()
+iwOuter.next().hide();
+
+iwBackground.children(':nth-child(2)').css({'display' : 'none'})
+iwBackground.children(':nth-child(4)').css({'display' : 'none'})
 
 module.exports = map

@@ -27,7 +27,7 @@ main {
   margin-top: 50px; }
 
 #mission-statement {
-  min-height: 105vh;
+  min-height: 800px;
   padding: 1px; }
   #mission-statement > div {
     max-width: 900px;
@@ -50,7 +50,7 @@ Components
   font-size: 22px;
   font-weight: 400;
   padding: 10px;
-  background-color: #48b5e9;
+  background-color: #5191FF;
   margin: 0;
   border-radius: 2px 2px 0 0; }
 
@@ -72,9 +72,9 @@ Components
   border: 1px solid rgba(72, 181, 233, 0.6);
   border-radius: 2px 2px 0 0; }
 
-.lightbox {
+.lightbox, #payment {
   width: 600px;
-  height: 400px;
+  height: 185px;
   position: fixed;
   top: 50%;
   left: 50%;
@@ -85,20 +85,14 @@ Components
   padding: 20px;
   border: 2px solid #f4eecb;
   border-radius: 10px; }
-  .lightbox h1 {
+  .lightbox h1, #payment h1 {
     font-size: 40px;
     font-weight: bold;
-    margin-top: 0; }
-  .lightbox .close {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    font-weight: bold;
-    cursor: pointer; }
-  .lightbox .buttons {
+    margin: 0; }
+  .lightbox .buttons, #payment .buttons {
     text-align: center;
-    margin-top: 90px; }
-  .lightbox span.divider {
+    margin-top: 30px; }
+  .lightbox span.divider, #payment span.divider {
     display: inline-block;
     margin: 0 10px;
     font-size: 24px;
@@ -116,13 +110,10 @@ footer span, button, .show-more, .btn, #signinButton {
   footer span a, button a, .show-more a, .btn a, #signinButton a {
     text-decoration: none; }
 
-.g-signin {
-  cursor: pointer; }
-
 .show-more {
   position: absolute;
   left: 50%;
-  top: 545px;
+  top: 70%;
   transform: translateX(-50%);
   text-align: center;
   text-decoration: none; }
@@ -162,23 +153,36 @@ footer span, button, .show-more, .btn, #signinButton {
 
 #contributions {
   position: absolute;
-  top: 365px;
+  top: 50%;
   width: 100%;
   text-align: center;
   font-size: 60px;
   color: white;
-  background-color: #79CD71;
+  background-color: rgba(121, 205, 113, 0.75);
   text-shadow: 1px 1px 5px #969696;
   border: 2px solid #f4eecb;
   border-right: none;
   border-left: none; }
   #contributions span {
     font-weight: bold; }
+  #contributions .search-button {
+    font-size: 20px;
+    display: inline-block;
+    width: 300px;
+    padding-bottom: 6px;
+    background-color: #5191FF;
+    margin-left: 35px; }
+    #contributions .search-button h1 {
+      font-weight: bold;
+      font-family: 'Quicksand', sans-serif;
+      margin: 5px 0 6px 0; }
+    #contributions .search-button #signinButton {
+      padding: initial; }
 
 .cover {
   position: absolute;
   top: 50px;
-  background: radial-gradient(rgba(0, 142, 168, 0), rgba(81, 145, 255, 0.4));
+  background: linear-gradient(transparent, rgba(81, 145, 255, 0.5));
   height: 100vh;
   width: 100%; }
 
@@ -196,11 +200,12 @@ footer span, button, .show-more, .btn, #signinButton {
   color: #fff; }
 
 form label {
-  font-family: Roboto;
-  font-size: 60px; }
+  font-size: 60px;
+  font-weight: bold;
+  color: #fff;
+  text-shadow: 1px 1px 5px #969696; }
 
 #address, #this_is_why {
-  display: block;
   box-sizing: border-box;
   width: 570px;
   height: 32px;
@@ -212,10 +217,10 @@ form label {
   outline: none;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
   background-color: #fff;
-  font-family: Roboto;
   font-size: 15px;
   font-weight: 300;
-  text-overflow: ellipsis; }
+  text-overflow: ellipsis;
+  color: black; }
   #address:focus, #this_is_why:focus {
     border-color: #4d90fe; }
 
@@ -327,25 +332,38 @@ section {
 
 #payment {
   background-color: #79CD71;
-  width: 530px;
   height: 430px;
-  padding: 1px 35px 0 35px; }
+  padding: 1px 25px 0 25px;
+  display: flex;
+  overflow: hidden; }
+  #payment .amount {
+    flex: 1;
+    margin-right: 25px;
+    background-color: #5191FF;
+    padding-top: 162px; }
+    #payment .amount h1 {
+      margin-top: 45px; }
+  #payment form {
+    margin-top: 15px;
+    flex: 5; }
   #payment h1, #payment h2 {
     font-size: 25px; }
   #payment h1 {
-    padding: 0 10px 0 15px; }
+    padding: 0 10px 0 15px;
+    margin: 10px 0 20px 0; }
   #payment i {
     margin-right: 10px; }
   #payment h2 {
     margin: 0;
     height: 60px;
-    padding-top: 15px;
+    padding: 15px 10px 0 10px;
     border-bottom: 2px solid #f4eecb; }
   #payment label {
     font-size: 16px; }
   #payment input {
     border-radius: 6px;
-    margin-top: 3px; }
+    margin-top: 3px;
+    color: black; }
   #payment span {
     display: block;
     margin: auto;
@@ -356,32 +374,34 @@ section {
     font-size: 20px;
     padding-top: 8px;
     border: 2px solid #f4eecb;
-    border-radius: 6px; }
+    border-radius: 6px;
+    cursor: pointer; }
 
 .card-image {
   background-color: grey;
-  padding: 1px 10px 15px 10px;
-  margin-top: 5px;
+  margin-top: 20px;
   border: 2px solid #f4eecb;
-  border-radius: 8px; }
+  border-radius: 8px;
+  text-align: left; }
   .card-image .fa-cc-mastercard {
     margin-left: 60px; }
 
 .card-image .container {
   display: flex;
   margin: 10px 0 15px 0;
-  padding-bottom: 15px;
+  padding: 0 10px 15px 10px;
   border-bottom: 2px solid #f4eecb; }
   .card-image .container div input, .card-image .container label {
     width: 100%; }
   .card-image .container div:first-child {
-    flex: 7;
+    flex: 6;
     margin-right: 14px; }
   .card-image .container div:last-child {
     flex: 2; }
 
 .card-image div:last-child {
-  position: relative; }
+  position: relative;
+  padding: 0 10px 15px 10px; }
   .card-image div:last-child label {
     display: block; }
   .card-image div:last-child input[name="expire-data"] {
@@ -389,7 +409,7 @@ section {
   .card-image div:last-child p {
     position: absolute;
     right: 10px;
-    bottom: -8px;
+    bottom: 13px;
     margin: 0; }
   .card-image div:last-child i {
     font-size: 48px;

@@ -90,6 +90,10 @@ app.get('/auth/google/callback',
 
   })
 
+app.get('/auth/google/logout', function (req, res){
+  req.logout()
+  res.redirect('/')
+})
 
 // request data
 app.get('/auth/google/profile', function (req, res) {

@@ -18,6 +18,7 @@ var searchTemplate = require('../templates/search.hbs')
 var contTemplate = require('../templates/contributions.hbs')
 var whyTemplate = require('../templates/why.hbs')
 var infowWindowTemplate = require('../templates/infowindow.hbs')
+var aboutTemplate = require('../templates/about.hbs')
 var paymentTemplate = require('../templates/payment.hbs')
 
 // Collections GO BACK and put this into the VIEW
@@ -50,7 +51,7 @@ var Process = Backbone.View.extend({
 
 			google.maps.event.addListener(searchBox, 'places_changed', function() {
 				App.Settings.rotateMap = false
-				App.map.setOptions({draggable: false})
+				// App.map.setOptions({draggable: false})
 
 				$('#geocoding_form').css('display', 'none')
 
@@ -108,7 +109,9 @@ var Process = Backbone.View.extend({
 	},
 
 	events: {
-		"click input.btn": "nextStep" 
+		"click input.btn": "nextStep",
+		"click .payment": "payment",
+		"click #submit-payment": "submitPayment"
 	},
 
 	nextStep: function () {
@@ -145,19 +148,17 @@ var Process = Backbone.View.extend({
 			msg: msg
 		}
 
-		infowindow = new google.maps.InfoWindow({
-			content: infowWindowTemplate(data)
-		})
-
-		infowindow.open(map, this.marker)
-
-		console.log(infowindow)
+		// infowindow = new google.maps.InfoWindow({
+		// 	content: infowWindowTemplate(data)
+		// })
+		// infowindow.open(map, this.marker)
+		// console.log(infowindow)
 
 		$('#why').css('display', 'none')
 
 
 		App.Settings.rotateMap = true
-		App.map.setOptions({draggable: true})
+		// App.map.setOptions({draggable: true})
 
 		var iwOuter = $('.gm-style-iw')
 		var iwBackground = iwOuter.prev()
@@ -167,8 +168,30 @@ var Process = Backbone.View.extend({
 
 		// Remove the white background DIV
 		iwBackground.children(':nth-child(4)').css({'display' : 'none'})
+		this.$el.append(aboutTemplate())
+	},
+
+	payment: function () {
+		$('.lightbox').remove()
 		this.$el.append(paymentTemplate())
-		// App.router.navigate('/', { trigger: true })
+	},
+
+	submitPayment: function () {
+		var user = userCollection.findWhere({displayName: this.userLoggedIn.displayName})
+
+		var contributions = user.get('contributions')
+
+		if (!!contributions) {
+			contributions = contributions + 1
+			user.set('contributions', contributions)
+			user.save()
+		} else {
+			user.set('contributions', 1)
+			user.save()
+		}
+
+		App.router.navigate('/', { trigger: true })
+
 	}
 })
 

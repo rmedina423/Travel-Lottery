@@ -21,6 +21,7 @@ var UserProfile = require('./views/user-page')
 App.Views.userProfile = new UserProfile
 
 var loggedInUserTemplate = require('./templates/logged-in-user.hbs')
+var searchButtonTemplate = require('./templates/search-button.hbs')
 
 
 
@@ -62,7 +63,9 @@ Backbone.history.start();
 $.get('/auth/google/profile').done(function (user) {
   console.log('logged in! :)')
   $('#loggedInUser').html(loggedInUserTemplate({user: user.displayName}))
-  $('#signinButton').hide()
+  $('.primary-footer > div').html(searchButtonTemplate())
+  $('#contributions').append(searchButtonTemplate())
+
 }).fail(function () {
   console.log('not logged in :(')
 })
