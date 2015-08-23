@@ -16,15 +16,18 @@ var howItWorksTemplate = require('../templates/howItWorks.hbs')
 var contTemplate = require('../templates/contributions.hbs')
 var footerTemplate = require('../templates/footer.hbs')
 var paymentTemplate = require('../templates/payment.hbs')
+var winnerTemmplate = require('../templates/winner.hbs')
 
 var LandingPage = Backbone.View.extend({
 
 	el: 'main',
 
-	collection: App.Collections.user,
+	collection: {
+		user: App.Collections.user,
+		place: App.Collections.place
+	},
 
 	render: function () {
-
 		var _this = this
 
 		this.$el.html(
@@ -34,9 +37,41 @@ var LandingPage = Backbone.View.extend({
 			footerTemplate()
 		)
 
-		this.collection.fetch().done(function (users) {
+		this.collection.user.fetch().done(function (users) {
 			contributions = _.pluck(users, 'contributions').reduce(_.add)
-			_this.$el.append(contTemplate({contributions: contributions}))
+
+			// if (contributions === 21) {
+				var lengthOfUsers = App.Collections.user.length
+				var randomUserIndex = _.random(0, lengthOfUsers - 1)
+				var winner = App.Collections.user.models[randomUserIndex].attributes
+
+				_this.collection.place.fetch().done(function () {
+					var place = _this.collection.place.getPlace(winner.placeId)
+					var placeName = place.get('name')
+
+					var winnerInfo = {
+						img: winner.photos[0].value,
+						fullName: winner.displayName,
+						place: placeName,
+						msg: winner.msg,
+						firstName: winner.name.givenName
+					}
+
+					_this.$el.append(winnerTemmplate(winnerInfo))
+				})
+
+			// } else {
+			// 	_this.$el.append(contTemplate({contributions: contributions}))
+			// }
+
+
+			// setInterval(function () {
+			// 	$('#contributions').toggleClass('slideInLeft')
+			// 	$('#contributions').toggleClass('shake')
+			// }, 1000)
+
+
+
 
 			$('a.show-more').click(function () {
 				$('html, body').animate({
@@ -64,9 +99,6 @@ var LandingPage = Backbone.View.extend({
 
 			})
 		})
-
-		console.log($('.viewport-container'))
-
 
 		map(this.$el.find('#map')[0])
 	},

@@ -37,7 +37,7 @@ var map = function(mapEl) {
 	userCollection.fetch()
 
 	var map = new google.maps.Map(mapEl, {
-		mapTypeId: google.maps.MapTypeId.ROADMAP,
+		mapTypeId: google.maps.MapTypeId.TERRAIN,
 		zoom: 3,
 		center: {lat: 10, lng: 20},
 		disableDefaultUI: true,
@@ -62,7 +62,43 @@ var map = function(mapEl) {
 
 				markers.push(marker)
 			}
+
+			if (!matchedUser) {
+				unmatchedPlace = placeCollection.getPlace(place.id)
+				unmatchedPlace.destroy()
+			}
+
+			marker.addListener('click', function() {
+				if (infowindow) {
+					infowindow.close()
+				}
+				var placeMarker = placeCollection.findWhere({
+					lat: marker.position.G,
+					lng: marker.position.K
+				})
+
+				var userMarker = userCollection.getUser(placeMarker.id)
+
+				infowindow = new google.maps.InfoWindow({
+					content: whyTemplate({
+						name: userMarker.get('displayName'),
+						msg: userMarker.get('msg')
+					})
+				})
+
+				infowindow.open(map, marker)
+
+				console.log('click')
+			})
+
 		})
+	})
+
+	google.maps.event.addListener(map, 'drag', function() {
+		App.Settings.rotateMap = false
+		setTimeout(function () {
+			App.Settings.rotateMap = true
+		}, 20000)
 	})
 
 	var indexNumber = 0
@@ -71,6 +107,8 @@ var map = function(mapEl) {
 
 		if (counter === placeCollection.length-1) {
 			indexNumber = 0
+		} else {
+			counter
 		}
 
 		if (App.Settings.rotateMap) {

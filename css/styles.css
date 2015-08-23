@@ -24,10 +24,11 @@ html, body, #map {
   background-color: #5191FF; }
 
 main {
-  margin-top: 50px; }
+  margin-top: 50px;
+  overflow: hidden; }
 
 #mission-statement {
-  min-height: 800px;
+  min-height: 100vh;
   padding: 1px; }
   #mission-statement > div {
     max-width: 900px;
@@ -179,6 +180,52 @@ footer span, button, .show-more, .btn, #signinButton {
     #contributions .search-button #signinButton {
       padding: initial; }
 
+#winner {
+  position: absolute;
+  top: 50%;
+  width: 100%;
+  background-color: rgba(121, 205, 113, 0.75); }
+
+#winner > div {
+  width: 960px;
+  display: flex;
+  font-size: 20px;
+  margin: auto; }
+  #winner > div h1, #winner > div h2, #winner > div h3, #winner > div p {
+    margin: 0; }
+  #winner > div img {
+    position: absolute;
+    left: -60px;
+    border-radius: 30%; }
+  #winner > div h1 {
+    position: relative;
+    display: inline-block;
+    font-size: 35px;
+    margin-top: 23px;
+    font-weight: bold;
+    margin-right: 20px; }
+  #winner > div h2 {
+    font-size: 25px;
+    font-weight: bold;
+    margin-right: 20px; }
+  #winner > div h3 {
+    margin-top: 10px;
+    font-size: 17px; }
+  #winner > div p {
+    margin-top: 5px;
+    font-weight: bold; }
+  #winner > div span {
+    font-weight: initial;
+    display: inline-block;
+    margin-bottom: 10px;
+    font-size: 17px; }
+  #winner > div div:first-child {
+    flex: 2;
+    text-align: center; }
+  #winner > div div:last-child {
+    text-align: center;
+    flex: 3; }
+
 .cover {
   position: absolute;
   top: 50px;
@@ -199,11 +246,13 @@ footer span, button, .show-more, .btn, #signinButton {
   font-size: 20px;
   color: #fff; }
 
-form label {
+label[for=address], label[for=why] {
   font-size: 60px;
   font-weight: bold;
   color: #fff;
-  text-shadow: 1px 1px 5px #969696; }
+  text-shadow: 3px 3px 5px #969696; }
+  label[for=address] h1, label[for=why] h1 {
+    margin: 0; }
 
 #address, #this_is_why {
   box-sizing: border-box;
@@ -220,7 +269,8 @@ form label {
   font-size: 15px;
   font-weight: 300;
   text-overflow: ellipsis;
-  color: black; }
+  color: black;
+  font-weight: bold; }
   #address:focus, #this_is_why:focus {
     border-color: #4d90fe; }
 
@@ -327,15 +377,15 @@ section {
   section > div:last-child {
     min-height: 410px;
     width: 100%;
-    margin-top: 15px;
-    background-color: black; }
+    margin-top: 15px; }
 
 #payment {
   background-color: #79CD71;
   height: 430px;
   padding: 1px 25px 0 25px;
   display: flex;
-  overflow: hidden; }
+  overflow: hidden;
+  color: #5b5b5b; }
   #payment .amount {
     flex: 1;
     margin-right: 25px;
@@ -355,15 +405,16 @@ section {
     margin-right: 10px; }
   #payment h2 {
     margin: 0;
-    height: 60px;
-    padding: 15px 10px 0 10px;
-    border-bottom: 2px solid #f4eecb; }
+    height: 70px;
+    padding: 23px 10px 0 10px;
+    border-bottom: 2px solid #fbfbfb;
+    background: linear-gradient(#efefef, #E2E2E2);
+    font-weight: bold; }
   #payment label {
     font-size: 16px; }
   #payment input {
     border-radius: 6px;
-    margin-top: 3px;
-    color: black; }
+    margin-top: 3px; }
   #payment span {
     display: block;
     margin: auto;
@@ -373,35 +424,40 @@ section {
     margin-top: 20px;
     font-size: 20px;
     padding-top: 8px;
-    border: 2px solid #f4eecb;
+    border: 2px solid #d0d0d0;
     border-radius: 6px;
-    cursor: pointer; }
+    cursor: pointer;
+    font-weight: bold;
+    background: linear-gradient(#efefef, #E2E2E2); }
 
 .card-image {
-  background-color: grey;
   margin-top: 20px;
-  border: 2px solid #f4eecb;
+  border: 1px solid #d0d0d0;
   border-radius: 8px;
-  text-align: left; }
+  text-align: left;
+  overflow: hidden; }
   .card-image .fa-cc-mastercard {
     margin-left: 60px; }
 
 .card-image .container {
   display: flex;
-  margin: 10px 0 15px 0;
-  padding: 0 10px 15px 10px;
-  border-bottom: 2px solid #f4eecb; }
+  padding: 10px 10px 10px 10px;
+  border-bottom: 2px solid #fbfbfb;
+  background: linear-gradient(#efefef, #E2E2E2); }
   .card-image .container div input, .card-image .container label {
     width: 100%; }
   .card-image .container div:first-child {
     flex: 6;
     margin-right: 14px; }
   .card-image .container div:last-child {
-    flex: 2; }
+    flex: 2;
+    padding: 0;
+    background-color: initial; }
 
 .card-image div:last-child {
   position: relative;
-  padding: 0 10px 15px 10px; }
+  padding: 10px 10px 15px 10px;
+  background: linear-gradient(#efefef, #E2E2E2); }
   .card-image div:last-child label {
     display: block; }
   .card-image div:last-child input[name="expire-data"] {

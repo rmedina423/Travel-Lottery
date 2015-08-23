@@ -37,7 +37,7 @@ var Process = Backbone.View.extend({
 			mapTemplate()+ 
 			searchTemplate()
 		)
-
+		$('label').addClass('slideInLeft')
 		$('.show-more').hide()
 
 		map(this.$el.find('#map')[0])
@@ -109,9 +109,16 @@ var Process = Backbone.View.extend({
 	},
 
 	events: {
+		"keypress input#address": "preventDefault",
 		"click input.btn": "nextStep",
 		"click .payment": "payment",
 		"click #submit-payment": "submitPayment"
+	},
+
+	preventDefault: function (e) {
+		if (e.keyCode == '13') {
+             e.preventDefault()
+           }
 	},
 
 	nextStep: function () {

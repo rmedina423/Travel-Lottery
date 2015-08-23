@@ -34,11 +34,12 @@ html, body, #map {
 }
 
 main {
-	margin-top: $header-height
+	margin-top: $header-height;
+	overflow: hidden;
 }
 
 #mission-statement {
-	min-height: 800px;
+	min-height: 100vh;
 	padding: 1px;
 
 	> div {
@@ -206,6 +207,7 @@ footer span, button, .show-more, .btn, #signinButton {
 	}
 }
 
+
 #contributions {
 	position: absolute;
 	top: 50%;
@@ -244,6 +246,70 @@ footer span, button, .show-more, .btn, #signinButton {
 
 }
 
+#winner {
+	position: absolute;
+	top: 50%;
+	width: 100%;
+	background-color: rgba(121, 205, 113, 0.75);
+}
+
+#winner > div {
+	width: 960px;
+	display: flex;
+	font-size: 20px;
+	margin: auto;
+	h1, h2, h3, p {
+		margin: 0;
+	}
+
+	img {
+		position: absolute;
+		left: -60px;
+		border-radius: 30%;
+	}
+
+	h1 {
+		position: relative;
+		display: inline-block;
+		font-size: 35px;
+		margin-top: 23px;
+		font-weight: bold;
+		margin-right: 20px;
+	}
+
+	h2 {
+		font-size: 25px;
+		font-weight: bold;
+		margin-right: 20px;
+	}
+
+	h3 {
+		margin-top: 10px;
+		font-size: 17px;
+	}
+
+	p {
+		margin-top: 5px;
+		font-weight: bold;
+	}
+
+	span {
+		font-weight: initial;
+		display: inline-block;
+		margin-bottom: 10px;
+		font-size: 17px;
+	}
+	div:first-child {
+		// background-color: red;
+		flex: 2;
+		text-align: center;
+	}
+	div:last-child {
+		// background-color: blue;
+		text-align: center;
+		flex: 3;
+	}
+}
 
 .cover {
 	position: absolute;
@@ -269,11 +335,14 @@ footer span, button, .show-more, .btn, #signinButton {
 	color: #fff;
 }
 
-form label {
+label[for=address], label[for=why] {
 	font-size: 60px;
 	font-weight: bold;
 	color: #fff;
-	text-shadow: 1px 1px 5px rgba(150, 150, 150, 1);
+	text-shadow: 3px 3px 5px rgba(150, 150, 150, 1);
+	h1 {
+		margin: 0;
+	}
 }
 
 #address, #this_is_why {
@@ -294,6 +363,7 @@ form label {
 	font-weight: 300;
 	text-overflow: ellipsis;
 	color: black;
+	font-weight: bold;
 
 	&:focus {
 		border-color: #4d90fe;
@@ -448,7 +518,6 @@ section {
 		min-height: 410px;
 		width: 100%;
 		margin-top: 15px;
-		background-color: black;
 	}
 }
 
@@ -459,6 +528,7 @@ section {
 	padding: 1px 25px 0 25px;
 	display: flex;
 	overflow: hidden;
+	color: rgb(91, 91, 91);
 	
 	.amount {
 		flex: 1;
@@ -489,9 +559,11 @@ section {
 	}
 	h2 {
 		margin: 0;
-		height: 60px;
-		padding: 15px 10px 0 10px;
-		border-bottom: 2px solid #f4eecb;
+		height: 70px;
+		padding: 23px 10px 0 10px;
+		border-bottom: 2px solid #fbfbfb;
+		background: linear-gradient(#efefef, #E2E2E2);
+		font-weight: bold;
 	}
 
 	label {
@@ -501,7 +573,7 @@ section {
 	input {
 		border-radius: 6px;
 		margin-top: 3px;
-		color: black;
+		// color: black;
 	}
 	span {
 		// background-color: pink;
@@ -513,19 +585,21 @@ section {
 		margin-top: 20px;
 		font-size: 20px;
 		padding-top: 8px;
-		border: 2px solid #f4eecb;
+		border: 2px solid #d0d0d0;
 		border-radius: 6px;
 		cursor: pointer;
+		font-weight: bold;
+		background: linear-gradient(#efefef, #E2E2E2);
 	}
 }
 
 .card-image {
-	background-color: grey;
-	// padding: 1px 10px 15px 10px;
+	// background-color: grey;
 	margin-top: 20px;
-	border: 2px solid #f4eecb;
+	border: 1px solid rgb(208, 208, 208);
 	border-radius: 8px;
 	text-align: left;
+	overflow: hidden;
 
 	.fa-cc-mastercard {
 		margin-left: 60px;
@@ -534,9 +608,9 @@ section {
 
 .card-image .container{
 	display: flex;
-	margin: 10px 0 15px 0;
-	padding: 0 10px 15px 10px;
-	border-bottom: 2px solid #f4eecb;
+	padding: 10px 10px 10px 10px;
+	border-bottom: 2px solid #fbfbfb;
+	background: linear-gradient(#efefef, #E2E2E2);
 	
 	div input, label {
 		width: 100%;
@@ -548,13 +622,16 @@ section {
 	}
 	div:last-child {
 		flex: 2;
+		padding: 0;
+		background-color: initial;
 	}
 
 }
 
 .card-image div:last-child {
 	position: relative;
-	padding: 0 10px 15px 10px;
+	padding: 10px 10px 15px 10px;
+	background: linear-gradient(#efefef, #E2E2E2);
 	label {
 		display: block;
 	}

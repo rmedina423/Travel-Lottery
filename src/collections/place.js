@@ -14,7 +14,10 @@ var Place = require('../models/place')
 
 var PlaceCollection = Backbone.Collection.extend({
 	url: App.Settings.apiRoot + '/places',
-	model: Place
+	model: Place,
+	getPlace: function (id) {
+		return this.findWhere({id: id})
+	}
 })
 
 App.Collections.place = new PlaceCollection
