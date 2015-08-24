@@ -1,1 +1,129 @@
-{}
+{
+  "places": [
+    {
+      "name": "Australia",
+      "lat": -25.274398,
+      "lng": 133.77513599999997,
+      "id": 3
+    },
+    {
+      "name": "Chile",
+      "lat": -35.675147,
+      "lng": -71.54296899999997,
+      "id": 4
+    },
+    {
+      "name": "Kazakhstan",
+      "lat": 48.019573,
+      "lng": 66.92368399999998,
+      "id": 12
+    },
+    {
+      "name": "Romania",
+      "lat": 45.943161,
+      "lng": 24.966760000000022,
+      "id": 13
+    },
+    {
+      "name": "Iceland",
+      "lat": 64.963051,
+      "lng": -19.020835000000034,
+      "id": 14
+    }
+  ],
+  "users": [
+    {
+      "provider": "google",
+      "id": 113987806811958300000,
+      "displayName": "Duane Winkel",
+      "name": {
+        "familyName": "Winkel",
+        "givenName": "Duane"
+      },
+      "photos": [
+        {
+          "value": "https://lh4.googleusercontent.com/-qYnRvey-BK0/AAAAAAAAAAI/AAAAAAAAub0/sCI817lnfHk/photo.jpg?sz=50"
+        }
+      ],
+      "gender": "male",
+      "msg": "Because I like Kangaroos",
+      "placeId": 3,
+      "winner": true,
+      "contributions": 0
+    },
+    {
+      "provider": "google",
+      "id": 107721885084506140000,
+      "displayName": "Nathaniel Medina",
+      "name": {
+        "familyName": "Medina",
+        "givenName": "Nathaniel"
+      },
+      "photos": [
+        {
+          "value": "https://lh6.googleusercontent.com/-qQU09oRj1aU/AAAAAAAAAAI/AAAAAAAAAXU/FwumtY_rG2g/photo.jpg?sz=50"
+        }
+      ],
+      "gender": "male",
+      "msg": "Because I love me some CHILE!!!",
+      "placeId": 4,
+      "contributions": 0
+    },
+    {
+      "provider": "google",
+      "id": 115265269931366510000,
+      "displayName": "Chris V",
+      "name": {
+        "familyName": "V",
+        "givenName": "Chris"
+      },
+      "photos": [
+        {
+          "value": "https://lh3.googleusercontent.com/-Sgv1XxKSk-s/AAAAAAAAAAI/AAAAAAAAAKc/-v8BXRk3ap8/photo.jpg?sz=50"
+        }
+      ],
+      "gender": "male",
+      "msg": "It NICE",
+      "placeId": 12,
+      "winner": true,
+      "contributions": 0
+    },
+    {
+      "provider": "google",
+      "id": 105706378472800160000,
+      "displayName": "Ryan M. Medina",
+      "name": {
+        "familyName": "Medina",
+        "givenName": "Ryan M."
+      },
+      "photos": [
+        {
+          "value": "https://lh4.googleusercontent.com/-c3DR6TSRE7k/AAAAAAAAAAI/AAAAAAAAAP0/6QIkMvbYWLU/photo.jpg?sz=50"
+        }
+      ],
+      "gender": "male",
+      "msg": "I LOVE me some Romanian women! ;)",
+      "placeId": 13,
+      "contributions": 0,
+      "winner": true
+    },
+    {
+      "provider": "google",
+      "id": 115621432734258630000,
+      "displayName": "Derek Doughty",
+      "name": {
+        "familyName": "Doughty",
+        "givenName": "Derek"
+      },
+      "photos": [
+        {
+          "value": "https://lh4.googleusercontent.com/-ILBBMWQjtiA/AAAAAAAAAAI/AAAAAAAAI3Y/cRVS9vrrVYc/photo.jpg?sz=50"
+        }
+      ],
+      "gender": "male",
+      "msg": "I have never been there and I think it's gonna be loaded with lots of eye candy. :)",
+      "placeId": 14,
+      "contributions": 0
+    }
+  ]
+}

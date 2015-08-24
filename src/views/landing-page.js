@@ -1,6 +1,7 @@
 var $ = require('jquery')
 var Backbone = require('backbone')
 var _ = require('lodash')
+var slick = require('slick-carousel')
 
 // App
 var App = require('../app')
@@ -28,12 +29,6 @@ var LandingPage = Backbone.View.extend({
 	},
 
 	render: function () {
-		var x;
-		var y;
-
-		clearInterval(x)
-		clearInterval(y)
-
 		var _this = this
 
 		this.$el.html(
@@ -134,20 +129,20 @@ var LandingPage = Backbone.View.extend({
 						firstName: modelWinner.name.givenName
 					}
 					
-					x = setInterval(function () {
-						$('#contributions').toggleClass('slideInLeft')
-						$('#contributions').toggleClass('slideOutRight')
-					}, 5000)
+					// x = setInterval(function () {
+					// 	$('#contributions').toggleClass('slideInLeft')
+					// 	$('#contributions').toggleClass('slideOutRight')
+					// }, 5000)
 
-					setTimeout(function () {
-						_this.$el.append(winnerTemplate(modelWinnerInfo))
+					// setTimeout(function () {
+					// 	_this.$el.append(winnerTemplate(modelWinnerInfo))
 
-						y = setInterval(function () {
-							$('#winner').toggleClass('slideInLeft')
-							$('#winner').toggleClass('slideOutRight')
-						}, 5000)
+					// 	y = setInterval(function () {
+					// 		$('#winner').toggleClass('slideInLeft')
+					// 		$('#winner').toggleClass('slideOutRight')
+					// 	}, 5000)
 
-					}, 5000)
+					// }, 5000)
 				})
 			}
 
@@ -157,6 +152,16 @@ var LandingPage = Backbone.View.extend({
 				}, 500);
 
 				return false;
+			})
+
+			$('.slick').slick({
+				infinite: true,
+				slidesToShow: 1,
+				slidesToScroll: 1,
+				autoplay: true,
+				autoplaySpeed: 2000,
+				arrows: false,
+				cssEase: 'ease'
 			})
 
 		})

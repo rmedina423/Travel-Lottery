@@ -211,10 +211,14 @@ footer span, button, .show-more, .btn, #signinButton {
 	}
 }
 
-
-#contributions {
+.viewport-container {
 	position: absolute;
-	top: 50%;
+	width: 100%;
+	top: 50%;	
+}
+#contributions {
+	// position: absolute;
+	// top: 50%;
 	width: 100%;
 	text-align: center;
 	font-size: 60px;
@@ -253,8 +257,8 @@ footer span, button, .show-more, .btn, #signinButton {
 }
 
 #winner {
-	position: absolute;
-	top: 50%;
+	// position: absolute;
+	// top: 50%;
 	width: 100%;
 	background-color: rgba(121, 205, 113, 0.75);
 	height: 110px;
