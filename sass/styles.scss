@@ -216,7 +216,7 @@ footer span, button, .show-more, .btn, #signinButton {
 	width: 100%;
 	top: 50%;	
 }
-#contributions {
+.contributions {
 	// position: absolute;
 	// top: 50%;
 	width: 100%;
@@ -228,8 +228,8 @@ footer span, button, .show-more, .btn, #signinButton {
 	border: 2px solid #f4eecb;
 	border-right: none;
 	border-left: none;
-	min-height: 110px;
-	padding-top: 16px;
+	min-height: 120px;
+	padding-top: 19px;
 
 	span {
 		font-weight: bold;
@@ -256,18 +256,18 @@ footer span, button, .show-more, .btn, #signinButton {
 
 }
 
-#winner {
+.winner {
 	// position: absolute;
 	// top: 50%;
 	width: 100%;
 	background-color: rgba(121, 205, 113, 0.75);
-	height: 110px;
+	height: 120px;
 	border: 2px solid;
 	border-right: none;
 	border-left: none;
 }
 
-#winner > div {
+.winner > div {
 	width: 960px;
 	display: flex;
 	font-size: 20px;

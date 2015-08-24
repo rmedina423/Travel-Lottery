@@ -65,7 +65,8 @@ $.get('/auth/google/profile').done(function (user) {
   console.log('logged in! :)')
   $('#loggedInUser').html(loggedInUserTemplate({user: user.displayName}))
   $('.primary-footer > div').html(searchButtonTemplate())
-  $('#contributions').append(searchButtonTemplate())
+  console.log($('.contributions'))
+  $('.contributions').append(searchButtonTemplate())
 
 }).fail(function () {
   console.log('not logged in :(')

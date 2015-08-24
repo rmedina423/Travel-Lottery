@@ -55,7 +55,6 @@ var LandingPage = Backbone.View.extend({
 				users.forEach(function (user) {
 					if (!!user.contributions) {
 						var validUser = App.Collections.user.findWhere({id: user.id})
-						console.log(validUser)
 						validEntrants.push(validUser)
 					}
 				})
@@ -74,35 +73,29 @@ var LandingPage = Backbone.View.extend({
 						fullName: winner.displayName,
 						place: placeName,
 						msg: winner.msg,
-						firstName: winner.name.givenName
+						firstName: winner.name.givenName,
+						contributions: contributions
 					}
 
 					winnerModel = App.Collections.user.models[randomUserIndex]
 					winnerModel.set('winner', true)
 					winnerModel.save()
 
-					_this.$el.append(winnerTemplate(winnerInfo))
+					_this.$el.append(contTemplate(winnerInfo))
 
-					setInterval(function () {
-						$('#winner').toggleClass('slideInLeft')
-						$('#winner').toggleClass('slideOutRight')
-					}, 5000)
-
-					setTimeout(function () {
-						contributions = _.pluck(users, 'contributions').reduce(_.add)
-						_this.$el.append(contTemplate({contributions: contributions}))
-
-						setInterval(function () {
-							$('#contributions').addClass('slideInLeft')
-							$('#contributions').toggleClass('slideOutRight')
-						}, 5000)
-
-					}, 5000)
+					$('.slick').slick({
+						infinite: true,
+						slidesToShow: 1,
+						slidesToScroll: 1,
+						autoplay: true,
+						autoplaySpeed: 4000,
+						arrows: false,
+						cssEase: 'ease'
+					})
 
 				})
 
 			} else {
-				_this.$el.append(contTemplate({contributions: contributions}))
 				var pastWinners = []
 				
 				users.forEach(function (user) {
@@ -126,43 +119,31 @@ var LandingPage = Backbone.View.extend({
 						fullName: modelWinner.displayName,
 						place: placeName,
 						msg: modelWinner.msg,
-						firstName: modelWinner.name.givenName
+						firstName: modelWinner.name.givenName,
+						contributions: contributions
 					}
 					
-					// x = setInterval(function () {
-					// 	$('#contributions').toggleClass('slideInLeft')
-					// 	$('#contributions').toggleClass('slideOutRight')
-					// }, 5000)
+					_this.$el.append(contTemplate(modelWinnerInfo))
 
-					// setTimeout(function () {
-					// 	_this.$el.append(winnerTemplate(modelWinnerInfo))
-
-					// 	y = setInterval(function () {
-					// 		$('#winner').toggleClass('slideInLeft')
-					// 		$('#winner').toggleClass('slideOutRight')
-					// 	}, 5000)
-
-					// }, 5000)
+					$('.slick').slick({
+						infinite: true,
+						slidesToShow: 1,
+						slidesToScroll: 1,
+						autoplay: true,
+						autoplaySpeed: 4000,
+						arrows: false,
+						cssEase: 'ease'
+					})
 				})
 			}
 
-			$('a.show-more').click(function () {
-				$('html, body').animate({
-					scrollTop: $('#mission-statement').offset().top
-				}, 500);
+			// $('a.show-more').click(function () {
+			// 	$('html, body').animate({
+			// 		scrollTop: $('#mission-statement').offset().top
+			// 	}, 500);
 
-				return false;
-			})
-
-			$('.slick').slick({
-				infinite: true,
-				slidesToShow: 1,
-				slidesToScroll: 1,
-				autoplay: true,
-				autoplaySpeed: 2000,
-				arrows: false,
-				cssEase: 'ease'
-			})
+			// 	return false;
+			// })
 
 		})
 
@@ -187,13 +168,22 @@ var LandingPage = Backbone.View.extend({
 	},
 
 	events: {
-		"click a.learn-more": "scroll"
+		"click a.learn-more": "scroll",
+		"click a.show-more": "scroll-more"
 	},
 
 	scroll: function () {
 		$('html, body').animate({
 			scrollTop: $('[name=learn-more]').offset().top
 		}, 500);
+
+		return false;
+	},
+
+	scroll: function () {
+		$('html, body').animate({
+				scrollTop: $('#mission-statement').offset().top
+			}, 500);
 
 		return false;
 	}

@@ -160,7 +160,7 @@ footer span, button, .show-more, .btn, #signinButton {
   width: 100%;
   top: 50%; }
 
-#contributions {
+.contributions {
   width: 100%;
   text-align: center;
   font-size: 60px;
@@ -170,69 +170,69 @@ footer span, button, .show-more, .btn, #signinButton {
   border: 2px solid #f4eecb;
   border-right: none;
   border-left: none;
-  min-height: 110px;
-  padding-top: 16px; }
-  #contributions span {
+  min-height: 120px;
+  padding-top: 19px; }
+  .contributions span {
     font-weight: bold; }
-  #contributions .search-button {
+  .contributions .search-button {
     font-size: 20px;
     display: inline-block;
     width: 300px;
     padding-bottom: 6px;
     background-color: #5191FF;
     margin-left: 35px; }
-    #contributions .search-button h1 {
+    .contributions .search-button h1 {
       font-weight: bold;
       font-family: 'Quicksand', sans-serif;
       margin: 5px 0 6px 0; }
-    #contributions .search-button #signinButton {
+    .contributions .search-button #signinButton {
       padding: initial; }
 
-#winner {
+.winner {
   width: 100%;
   background-color: rgba(121, 205, 113, 0.75);
-  height: 110px;
+  height: 120px;
   border: 2px solid;
   border-right: none;
   border-left: none; }
 
-#winner > div {
+.winner > div {
   width: 960px;
   display: flex;
   font-size: 20px;
   margin: auto; }
-  #winner > div h1, #winner > div h2, #winner > div h3, #winner > div p {
+  .winner > div h1, .winner > div h2, .winner > div h3, .winner > div p {
     margin: 0; }
-  #winner > div img {
+  .winner > div img {
     position: absolute;
     left: -60px;
     border-radius: 30%; }
-  #winner > div h1 {
+  .winner > div h1 {
     position: relative;
     display: inline-block;
     font-size: 35px;
     margin-top: 23px;
     font-weight: bold;
     margin-right: 20px; }
-  #winner > div h2 {
+  .winner > div h2 {
     font-size: 25px;
     font-weight: bold;
     margin-right: 20px; }
-  #winner > div h3 {
+  .winner > div h3 {
     margin-top: 10px;
     font-size: 17px; }
-  #winner > div p {
+  .winner > div p {
     margin-top: 5px;
     font-weight: bold; }
-  #winner > div span {
+  .winner > div span {
     font-weight: initial;
     display: inline-block;
     margin-bottom: 10px;
     font-size: 17px; }
-  #winner > div div:first-child {
+  .winner > div div:first-child {
     flex: 2;
     text-align: center; }
-  #winner > div div:last-child {
+  .winner > div div:last-child {
     text-align: center;
     flex: 3; }
 
