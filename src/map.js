@@ -81,14 +81,14 @@ var map = function(mapEl) {
 
 				infowindow = new google.maps.InfoWindow({
 					content: whyTemplate({
+						id: userMarker.get('id'),
 						name: userMarker.get('displayName'),
-						msg: userMarker.get('msg')
+						msg: userMarker.get('msg'),
+						winner: String(userMarker.get('winner'))
 					})
 				})
-
+				
 				infowindow.open(map, marker)
-
-				console.log('click')
 			})
 
 		})
@@ -123,9 +123,11 @@ var map = function(mapEl) {
 			if (user) {
 
 				var userInfo = {
+					id: user.get('id'),
 					name: user.get('displayName'),
 					msg: user.get('msg'),
-					img: user.get('photos')[0].value
+					img: user.get('photos')[0].value,
+					winner: String(user.get('winner'))
 				}
 
 				var lat = place.get('lat')
@@ -143,7 +145,7 @@ var map = function(mapEl) {
 				infowindow = new google.maps.InfoWindow({
 					content: whyTemplate(userInfo)
 				})
-				// console.log(infowindow)
+
 				infowindow.open(map, marker)
 
 				map.setCenter(markerPositionViewPort)

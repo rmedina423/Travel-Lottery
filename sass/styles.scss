@@ -70,6 +70,7 @@ Components
 	background-color: #5191FF;
 	margin: 0;
 	border-radius: 2px 2px 0 0;
+
 }
 
 #iw-container {
@@ -85,6 +86,9 @@ Components
 	}
 }
 
+.true {
+	background-color:  #79CD71 !important;
+}
 
 .gm-style-iw {
 	width: 215px !important;
@@ -220,6 +224,8 @@ footer span, button, .show-more, .btn, #signinButton {
 	border: 2px solid #f4eecb;
 	border-right: none;
 	border-left: none;
+	min-height: 110px;
+	padding-top: 16px;
 
 	span {
 		font-weight: bold;
@@ -251,6 +257,10 @@ footer span, button, .show-more, .btn, #signinButton {
 	top: 50%;
 	width: 100%;
 	background-color: rgba(121, 205, 113, 0.75);
+	height: 110px;
+	border: 2px solid;
+	border-right: none;
+	border-left: none;
 }
 
 #winner > div {
@@ -400,7 +410,7 @@ label[for=address], label[for=why] {
 .tiles {
 	text-align: center;
 	font-family: 'Quicksand', sans-serif;
-	background-color: #79CD71;;
+	background-color: #79CD71;
 	color: #fff;
 	font-weight: 500;
 
@@ -470,7 +480,6 @@ label[for=address], label[for=why] {
 	max-width: 960px;
 	margin: auto;
 	display: flex;
-	min-height: 660px;
 }
 
 aside, section {
@@ -478,46 +487,51 @@ aside, section {
 }
 
 aside {
-	// background-color: green;
 	flex: 1;
+	background-color: #79CD71;
 
-	> div:first-child {
-		min-height: 500px;
+	> div {
 		width: 100%;
-		background-color: pink;
+		text-align: center;
 	}
 
-	> div:last-child {
-		min-height: 160px;
-		width: 100%;
+	img {
 		margin-top: 20px;
-		background-color: orange
+		border-radius: 30%;
+	}
+
+	h1 {
+		font-size: 25px;
+		margin: 5px 0 0 0;
 	}
 }
 
 aside {
 	.user-image {
-		height: 250px;
+		height: 135px;
 		width: 100%;
-		background-color: green;
 	}
 }
 
 section {
-	// background-color: lime;
+	background-color: blue;
 	flex: 2;
 	margin-left: 25px;
+	padding: 0 25px 0 25px;
 
-	> div:first-child {
+	> div {
 		min-height: 250px;
 		width: 100%;
-		background-color: red;
 	}
 
-	> div:last-child {
-		min-height: 410px;
-		width: 100%;
-		margin-top: 15px;
+	h1 {
+		font-size: 30px;
+		margin: 10px 0 0 0;
+	}
+
+	h2, p {
+		font-size: 20px;
+		margin: 10px 0 0 0;
 	}
 }
 

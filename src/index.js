@@ -32,6 +32,7 @@ App.Router = Backbone.Router.extend({
   routes: {
     '': 'index',
     'userprofile(/)': 'userProfile',
+    'userprofile/:id(/)': 'userProfile',
     'process(/)': 'process',
     '*actions': 'defaultRoute'
   },
@@ -46,8 +47,8 @@ App.Router = Backbone.Router.extend({
     App.Views.process.render()
   },
 
-  userProfile: function() {
-    App.Views.userProfile.render()
+  userProfile: function(id) {
+    App.Views.userProfile.render(id)
   },
 
   defaultRoute: function(actions) {

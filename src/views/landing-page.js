@@ -16,7 +16,7 @@ var howItWorksTemplate = require('../templates/howItWorks.hbs')
 var contTemplate = require('../templates/contributions.hbs')
 var footerTemplate = require('../templates/footer.hbs')
 var paymentTemplate = require('../templates/payment.hbs')
-var winnerTemmplate = require('../templates/winner.hbs')
+var winnerTemplate = require('../templates/winner.hbs')
 
 var LandingPage = Backbone.View.extend({
 
@@ -28,6 +28,12 @@ var LandingPage = Backbone.View.extend({
 	},
 
 	render: function () {
+		var x;
+		var y;
+
+		clearInterval(x)
+		clearInterval(y)
+
 		var _this = this
 
 		this.$el.html(
@@ -38,14 +44,33 @@ var LandingPage = Backbone.View.extend({
 		)
 
 		this.collection.user.fetch().done(function (users) {
-			contributions = _.pluck(users, 'contributions').reduce(_.add)
+			var contributions = _.pluck(users, 'contributions').reduce(_.add)
 
-			// if (contributions === 21) {
-				var lengthOfUsers = App.Collections.user.length
+			if (contributions >= 21) {
+
+				var userModels = _this.collection.user.models
+
+				userModels.forEach(function (user) {
+					user.set('contributions', 0)
+					user.save()
+				})
+
+				var validEntrants = []
+
+				users.forEach(function (user) {
+					if (!!user.contributions) {
+						var validUser = App.Collections.user.findWhere({id: user.id})
+						console.log(validUser)
+						validEntrants.push(validUser)
+					}
+				})
+
+				var lengthOfUsers = validEntrants.length
 				var randomUserIndex = _.random(0, lengthOfUsers - 1)
-				var winner = App.Collections.user.models[randomUserIndex].attributes
+				var winner = validEntrants[randomUserIndex].attributes
 
 				_this.collection.place.fetch().done(function () {
+
 					var place = _this.collection.place.getPlace(winner.placeId)
 					var placeName = place.get('name')
 
@@ -57,21 +82,74 @@ var LandingPage = Backbone.View.extend({
 						firstName: winner.name.givenName
 					}
 
-					_this.$el.append(winnerTemmplate(winnerInfo))
+					winnerModel = App.Collections.user.models[randomUserIndex]
+					winnerModel.set('winner', true)
+					winnerModel.save()
+
+					_this.$el.append(winnerTemplate(winnerInfo))
+
+					setInterval(function () {
+						$('#winner').toggleClass('slideInLeft')
+						$('#winner').toggleClass('slideOutRight')
+					}, 5000)
+
+					setTimeout(function () {
+						contributions = _.pluck(users, 'contributions').reduce(_.add)
+						_this.$el.append(contTemplate({contributions: contributions}))
+
+						setInterval(function () {
+							$('#contributions').addClass('slideInLeft')
+							$('#contributions').toggleClass('slideOutRight')
+						}, 5000)
+
+					}, 5000)
+
 				})
 
-			// } else {
-			// 	_this.$el.append(contTemplate({contributions: contributions}))
-			// }
+			} else {
+				_this.$el.append(contTemplate({contributions: contributions}))
+				var pastWinners = []
+				
+				users.forEach(function (user) {
+					if (user.winner) {
+						var pastWinner = App.Collections.user.findWhere(user)
+						pastWinners.push(pastWinner)
+					}
+				})
 
+				var lengthOfUsers = pastWinners.length
+				var randomUserIndex = _.random(0, lengthOfUsers - 1)
+				var modelWinner = pastWinners[randomUserIndex].attributes
 
-			// setInterval(function () {
-			// 	$('#contributions').toggleClass('slideInLeft')
-			// 	$('#contributions').toggleClass('shake')
-			// }, 1000)
+				_this.collection.place.fetch().done(function () {
 
+					var place = _this.collection.place.getPlace(modelWinner.placeId)
+					var placeName = place.get('name')
 
+					var modelWinnerInfo = {
+						img: modelWinner.photos[0].value,
+						fullName: modelWinner.displayName,
+						place: placeName,
+						msg: modelWinner.msg,
+						firstName: modelWinner.name.givenName
+					}
+					
+					x = setInterval(function () {
+						$('#contributions').toggleClass('slideInLeft')
+						$('#contributions').toggleClass('slideOutRight')
+					}, 5000)
 
+					setTimeout(function () {
+						_this.$el.append(winnerTemplate(modelWinnerInfo))
+
+						y = setInterval(function () {
+							$('#winner').toggleClass('slideInLeft')
+							$('#winner').toggleClass('slideOutRight')
+						}, 5000)
+
+					}, 5000)
+				})
+			}
 
 			$('a.show-more').click(function () {
 				$('html, body').animate({

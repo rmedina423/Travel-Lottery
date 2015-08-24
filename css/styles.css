@@ -64,6 +64,9 @@ Components
   padding: 6px 10px;
   color: #000; }
 
+.true {
+  background-color: #79CD71 !important; }
+
 .gm-style-iw {
   width: 215px !important;
   top: 0 !important;
@@ -163,7 +166,9 @@ footer span, button, .show-more, .btn, #signinButton {
   text-shadow: 1px 1px 5px #969696;
   border: 2px solid #f4eecb;
   border-right: none;
-  border-left: none; }
+  border-left: none;
+  min-height: 110px;
+  padding-top: 16px; }
   #contributions span {
     font-weight: bold; }
   #contributions .search-button {
@@ -184,7 +189,11 @@ footer span, button, .show-more, .btn, #signinButton {
   position: absolute;
   top: 50%;
   width: 100%;
-  background-color: rgba(121, 205, 113, 0.75); }
+  background-color: rgba(121, 205, 113, 0.75);
+  height: 110px;
+  border: 2px solid;
+  border-right: none;
+  border-left: none; }
 
 #winner > div {
   width: 960px;
@@ -344,40 +353,42 @@ label[for=address], label[for=why] {
 #userProfile > div {
   max-width: 960px;
   margin: auto;
-  display: flex;
-  min-height: 660px; }
+  display: flex; }
 
 aside, section {
   margin-top: 20px; }
 
 aside {
-  flex: 1; }
-  aside > div:first-child {
-    min-height: 500px;
+  flex: 1;
+  background-color: #79CD71; }
+  aside > div {
     width: 100%;
-    background-color: pink; }
-  aside > div:last-child {
-    min-height: 160px;
-    width: 100%;
+    text-align: center; }
+  aside img {
     margin-top: 20px;
-    background-color: orange; }
+    border-radius: 30%; }
+  aside h1 {
+    font-size: 25px;
+    margin: 5px 0 0 0; }
 
 aside .user-image {
-  height: 250px;
-  width: 100%;
-  background-color: green; }
+  height: 135px;
+  width: 100%; }
 
 section {
+  background-color: blue;
   flex: 2;
-  margin-left: 25px; }
-  section > div:first-child {
+  margin-left: 25px;
+  padding: 0 25px 0 25px; }
+  section > div {
     min-height: 250px;
-    width: 100%;
-    background-color: red; }
-  section > div:last-child {
-    min-height: 410px;
-    width: 100%;
-    margin-top: 15px; }
+    width: 100%; }
+  section h1 {
+    font-size: 30px;
+    margin: 10px 0 0 0; }
+  section h2, section p {
+    font-size: 20px;
+    margin: 10px 0 0 0; }
 
 #payment {
   background-color: #79CD71;

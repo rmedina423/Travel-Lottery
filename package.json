@@ -40,7 +40,8 @@
     "passport": "^0.2.2",
     "passport-google-oauth": "^0.2.0",
     "passport-google-plus": "^0.5.1",
-    "request": "^2.61.0"
+    "request": "^2.61.0",
+    "slick-carousel": "^1.5.8"
   },
   "browser": {
     "bootstrap": "./node_modules/bootstrap/dist/js/bootstrap.js",

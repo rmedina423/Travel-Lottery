@@ -136,7 +136,14 @@ var Process = Backbone.View.extend({
 			displayName: this.userLoggedIn.displayName
 		})
 
-		currentUser.save({msg: msg, placeId: currentPlace.id})
+		currentUser.save({
+			msg: msg,
+			placeId: currentPlace.id,
+		})
+
+		if (!!currentUser.get('contributions') === false) {
+			currentUser.save({contributions: 0})
+		}
 
 		var place = placeCollection.findWhere({
 			lat: this.marker.position.G,
