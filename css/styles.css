@@ -95,7 +95,7 @@ Components
     margin: 0; }
   .lightbox .buttons, #payment .buttons {
     text-align: center;
-    margin-top: 30px; }
+    margin-top: 22px; }
   .lightbox span.divider, #payment span.divider {
     display: inline-block;
     margin: 0 10px;
@@ -105,22 +105,28 @@ Components
 footer span, button, .show-more, .btn, #signinButton {
   display: inline-block;
   padding: 13px;
-  border: 3px solid #f4eecb;
+  border: 2px solid #f4eecb;
   border-radius: 10px;
-  background-color: #79CD71;
+  background-color: rgba(121, 205, 113, 0.75);
   font-weight: bold;
-  width: 225px;
-  cursor: pointer; }
+  width: 250px;
+  cursor: pointer;
+  font-size: 21px; }
   footer span a, button a, .show-more a, .btn a, #signinButton a {
     text-decoration: none; }
 
-.show-more {
+.button-container {
   position: absolute;
   left: 50%;
-  top: 70%;
+  top: 75%;
   transform: translateX(-50%);
   text-align: center;
-  text-decoration: none; }
+  text-decoration: none;
+  display: flex; }
+  .button-container a.show-more {
+    flex: 1;
+    margin: 0 10px 0 10px;
+    text-decoration: none; }
 
 .primary-header {
   position: absolute;
@@ -171,7 +177,8 @@ footer span, button, .show-more, .btn, #signinButton {
   border-right: none;
   border-left: none;
   min-height: 120px;
-  padding-top: 19px; }
+  padding-top: 19px;
+  font-weight: bold; }
   .contributions span {
     font-weight: bold; }
   .contributions .search-button {
@@ -197,7 +204,7 @@ footer span, button, .show-more, .btn, #signinButton {
   border-left: none; }
 
 .winner > div {
-  width: 960px;
+  width: 1000px;
   display: flex;
   font-size: 20px;
   margin: auto; }
@@ -219,22 +226,24 @@ footer span, button, .show-more, .btn, #signinButton {
     font-weight: bold;
     margin-right: 20px; }
   .winner > div h3 {
-    margin-top: 10px;
-    font-size: 17px; }
+    margin-top: 15px;
+    font-size: 20px;
+    font-weight: bold; }
   .winner > div p {
     margin-top: 5px;
+    font-size: 25px;
     font-weight: bold; }
   .winner > div span {
     font-weight: initial;
-    display: inline-block;
-    margin-bottom: 10px;
-    font-size: 17px; }
+    margin-bottom: 8px;
+    font-size: 17px;
+    font-weight: bold; }
   .winner > div div:first-child {
     flex: 2;
     text-align: center; }
   .winner > div div:last-child {
     text-align: center;
-    flex: 3; }
+    flex: 4; }
 
 .cover {
   position: absolute;
@@ -257,10 +266,10 @@ footer span, button, .show-more, .btn, #signinButton {
   color: #fff; }
 
 label[for=address], label[for=why] {
-  font-size: 60px;
+  font-size: 70px;
   font-weight: bold;
-  color: #fff;
-  text-shadow: 3px 3px 5px #969696; }
+  color: #FCFAFA;
+  text-shadow: 4px 4px 5px #969696; }
   label[for=address] h1, label[for=why] h1 {
     margin: 0; }
 
@@ -377,7 +386,7 @@ aside .user-image {
   width: 100%; }
 
 section {
-  background-color: blue;
+  background-color: #1d70ff;
   flex: 2;
   margin-left: 25px;
   padding: 0 25px 0 25px; }

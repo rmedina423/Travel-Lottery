@@ -68,7 +68,8 @@ var map = function(mapEl) {
 				unmatchedPlace.destroy()
 			}
 
-			marker.addListener('click', function() {
+			marker.addListener('click', function(event) {
+				console.log(event)
 				if (infowindow) {
 					infowindow.close()
 				}

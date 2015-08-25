@@ -135,16 +135,17 @@ var LandingPage = Backbone.View.extend({
 						cssEase: 'ease'
 					})
 				})
+				
+
 			}
 
-			// $('a.show-more').click(function () {
-			// 	$('html, body').animate({
-			// 		scrollTop: $('#mission-statement').offset().top
-			// 	}, 500);
+			$('.target-anchor').click(function () {
+				$('html, body').animate({
+					scrollTop: $('#mission-statement').offset().top
+				}, 500);
 
-			// 	return false;
-			// })
-
+				return false;
+			})
 		})
 
 
@@ -168,22 +169,13 @@ var LandingPage = Backbone.View.extend({
 	},
 
 	events: {
-		"click a.learn-more": "scroll",
-		"click a.show-more": "scroll-more"
+		"click a.learn-more": "scroll"
 	},
 
 	scroll: function () {
 		$('html, body').animate({
 			scrollTop: $('[name=learn-more]').offset().top
 		}, 500);
-
-		return false;
-	},
-
-	scroll: function () {
-		$('html, body').animate({
-				scrollTop: $('#mission-statement').offset().top
-			}, 500);
 
 		return false;
 	}

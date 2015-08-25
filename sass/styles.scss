@@ -130,7 +130,7 @@ Components
 
 	.buttons {
 		text-align: center;
-		margin-top: 30px;
+		margin-top: 22px;
 	}
 
 	span.divider {
@@ -145,25 +145,32 @@ Components
 footer span, button, .show-more, .btn, #signinButton {
 	display: inline-block;
 	padding: 13px;
-	border: 3px solid #f4eecb;
+	border: 2px solid #f4eecb;
 	border-radius: 10px;
-	background-color: #79CD71;;
+	background-color: rgba(121, 205, 113, 0.75);
 	font-weight: bold;
-	width: 225px;
+	width: 250px;
 	cursor: pointer;
+	font-size: 21px;
 	
 	a {
 		text-decoration: none;
 	}
 }
 
-.show-more {
+.button-container {
 	position: absolute;
 	left: 50%;
-	top: 70%;
+	top: 75%;
 	transform: translateX(-50%);
 	text-align: center;
 	text-decoration: none;
+	display:flex;
+	a.show-more {
+		flex: 1;
+		margin: 0 10px 0 10px;
+		text-decoration: none;
+	}
 }
 
 .primary-header {
@@ -230,6 +237,7 @@ footer span, button, .show-more, .btn, #signinButton {
 	border-left: none;
 	min-height: 120px;
 	padding-top: 19px;
+	font-weight: bold;
 
 	span {
 		font-weight: bold;
@@ -268,7 +276,7 @@ footer span, button, .show-more, .btn, #signinButton {
 }
 
 .winner > div {
-	width: 960px;
+	width: 1000px;
 	display: flex;
 	font-size: 20px;
 	margin: auto;
@@ -298,20 +306,23 @@ footer span, button, .show-more, .btn, #signinButton {
 	}
 
 	h3 {
-		margin-top: 10px;
-		font-size: 17px;
+		margin-top: 15px;
+		font-size: 20px;
+		font-weight: bold;
 	}
 
 	p {
 		margin-top: 5px;
+		font-size: 25px;
 		font-weight: bold;
 	}
 
 	span {
 		font-weight: initial;
-		display: inline-block;
-		margin-bottom: 10px;
+		// display: inline-block;
+		margin-bottom: 8px;
 		font-size: 17px;
+		font-weight: bold;
 	}
 	div:first-child {
 		// background-color: red;
@@ -321,7 +332,7 @@ footer span, button, .show-more, .btn, #signinButton {
 	div:last-child {
 		// background-color: blue;
 		text-align: center;
-		flex: 3;
+		flex: 4;
 	}
 }
 
@@ -350,10 +361,10 @@ footer span, button, .show-more, .btn, #signinButton {
 }
 
 label[for=address], label[for=why] {
-	font-size: 60px;
+	font-size: 70px;
 	font-weight: bold;
-	color: #fff;
-	text-shadow: 3px 3px 5px rgba(150, 150, 150, 1);
+	color: #FCFAFA;
+	text-shadow: 4px 4px 5px rgba(150, 150, 150, 1);
 	h1 {
 		margin: 0;
 	}
@@ -518,7 +529,7 @@ aside {
 }
 
 section {
-	background-color: blue;
+	background-color: rgb(29, 112, 255);
 	flex: 2;
 	margin-left: 25px;
 	padding: 0 25px 0 25px;

@@ -19,16 +19,22 @@
       "id": 12
     },
     {
-      "name": "Romania",
-      "lat": 45.943161,
-      "lng": 24.966760000000022,
-      "id": 13
-    },
-    {
       "name": "Iceland",
       "lat": 64.963051,
       "lng": -19.020835000000034,
       "id": 14
+    },
+    {
+      "name": "Częstochowa",
+      "lat": 50.8118195,
+      "lng": 19.120309399999996,
+      "id": 15
+    },
+    {
+      "name": "Romania",
+      "lat": 45.943161,
+      "lng": 24.966760000000022,
+      "id": 16
     }
   ],
   "users": [
@@ -103,7 +109,7 @@
       ],
       "gender": "male",
       "msg": "I LOVE me some Romanian women! ;)",
-      "placeId": 13,
+      "placeId": 16,
       "contributions": 0,
       "winner": true
     },
