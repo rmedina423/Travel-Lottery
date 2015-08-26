@@ -33,7 +33,6 @@ main {
   #mission-statement > div {
     max-width: 900px;
     margin: auto;
-    margin-top: 8%;
     padding: 9px; }
 
 .tiles > div {
@@ -84,7 +83,7 @@ Components
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 1;
-  background-color: #79CD71;
+  background-color: rgba(121, 205, 113, 0.75);
   text-align: center;
   padding: 20px;
   border: 2px solid #f4eecb;
@@ -115,7 +114,7 @@ footer span, button, .show-more, .btn, #signinButton {
   footer span a, button a, .show-more a, .btn a, #signinButton a {
     text-decoration: none; }
 
-.button-container {
+.button-container, .title {
   position: absolute;
   left: 50%;
   top: 75%;
@@ -123,10 +122,16 @@ footer span, button, .show-more, .btn, #signinButton {
   text-align: center;
   text-decoration: none;
   display: flex; }
-  .button-container a.show-more {
+  .button-container a.show-more, .title a.show-more {
     flex: 1;
     margin: 0 10px 0 10px;
     text-decoration: none; }
+
+.title {
+  top: 25%;
+  font-size: 40px;
+  font-weight: bold;
+  text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.72); }
 
 .primary-header {
   position: absolute;
@@ -265,18 +270,18 @@ footer span, button, .show-more, .btn, #signinButton {
   font-size: 20px;
   color: #fff; }
 
-label[for=address], label[for=why] {
+label[for=address], label[for=why], .log-in {
   font-size: 70px;
   font-weight: bold;
   color: #FCFAFA;
-  text-shadow: 4px 4px 5px #969696; }
-  label[for=address] h1, label[for=why] h1 {
+  text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.72); }
+  label[for=address] h1, label[for=why] h1, .log-in h1 {
     margin: 0; }
 
 #address, #this_is_why {
   box-sizing: border-box;
   width: 570px;
-  height: 32px;
+  height: 40px;
   margin-top: 10px;
   padding: 0 11px 0 13px;
   border: 1px solid transparent;
@@ -289,7 +294,8 @@ label[for=address], label[for=why] {
   font-weight: 300;
   text-overflow: ellipsis;
   color: black;
-  font-weight: bold; }
+  font-weight: bold;
+  border-radius: 6px; }
   #address:focus, #this_is_why:focus {
     border-color: #4d90fe; }
 
@@ -300,7 +306,8 @@ label[for=address], label[for=why] {
   color: #fff;
   font-weight: 500; }
   #mission-statement h1 {
-    font-size: 50px; }
+    font-size: 50px;
+    margin-top: 189px; }
   #mission-statement p {
     font-size: 20px;
     line-height: 30px; }
@@ -320,7 +327,7 @@ label[for=address], label[for=why] {
   font-weight: 500; }
   .tiles header {
     font-size: 50px;
-    margin-top: 60px;
+    margin-top: 70px;
     padding: 0 10px; }
   .tiles h6 {
     font-size: 19px;
@@ -356,6 +363,8 @@ label[for=address], label[for=why] {
     margin: 90px 0 25px 0;
     font-size: 55px;
     font-weight: bold; }
+  .primary-footer #signinButton {
+    background-color: #79cd71; }
   .primary-footer span {
     border-color: #fff;
     background-color: transparent; }
@@ -389,7 +398,8 @@ section {
   background-color: #1d70ff;
   flex: 2;
   margin-left: 25px;
-  padding: 0 25px 0 25px; }
+  padding: 0 25px 0 25px;
+  overflow-wrap: break-word; }
   section > div {
     min-height: 250px;
     width: 100%; }
@@ -401,41 +411,41 @@ section {
     margin: 10px 0 0 0; }
 
 #payment {
-  background-color: #79CD71;
-  height: 430px;
-  padding: 1px 25px 0 25px;
+  height: 340px;
+  padding: 0 10px 0 0;
   display: flex;
-  overflow: hidden;
-  color: #5b5b5b; }
+  overflow: hidden; }
   #payment .amount {
-    flex: 1;
-    margin-right: 25px;
-    background-color: #5191FF;
-    padding-top: 162px; }
+    flex: 2;
+    margin-right: 10px;
+    background-color: rgba(81, 145, 255, 0.5);
+    padding-top: 120px; }
     #payment .amount h1 {
       margin-top: 45px; }
   #payment form {
     margin-top: 15px;
     flex: 5; }
   #payment h1, #payment h2 {
-    font-size: 25px; }
+    font-size: 30px; }
   #payment h1 {
     padding: 0 10px 0 15px;
-    margin: 10px 0 20px 0; }
+    margin: 10px 0 0 0; }
   #payment i {
     margin-right: 10px; }
   #payment h2 {
     margin: 0;
-    height: 70px;
-    padding: 23px 10px 0 10px;
-    border-bottom: 2px solid #fbfbfb;
-    background: linear-gradient(#efefef, #E2E2E2);
+    height: 40px;
+    padding: 0 10px 0 10px;
     font-weight: bold; }
   #payment label {
-    font-size: 16px; }
+    font-size: 16px;
+    font-weight: bold; }
   #payment input {
     border-radius: 6px;
-    margin-top: 3px; }
+    margin-top: 3px;
+    height: 40px;
+    background-color: #fff;
+    color: black; }
   #payment span {
     display: block;
     margin: auto;
@@ -445,16 +455,13 @@ section {
     margin-top: 20px;
     font-size: 20px;
     padding-top: 8px;
-    border: 2px solid #d0d0d0;
-    border-radius: 6px;
+    border-radius: 4px;
     cursor: pointer;
     font-weight: bold;
-    background: linear-gradient(#efefef, #E2E2E2); }
+    background: linear-gradient(#DDDDDD, #5191FF); }
 
 .card-image {
-  margin-top: 20px;
-  border: 1px solid #d0d0d0;
-  border-radius: 8px;
+  margin-top: 10px;
   text-align: left;
   overflow: hidden; }
   .card-image .fa-cc-mastercard {
@@ -462,9 +469,7 @@ section {
 
 .card-image .container {
   display: flex;
-  padding: 10px 10px 10px 10px;
-  border-bottom: 2px solid #fbfbfb;
-  background: linear-gradient(#efefef, #E2E2E2); }
+  padding: 10px 10px 10px 10px; }
   .card-image .container div input, .card-image .container label {
     width: 100%; }
   .card-image .container div:first-child {
@@ -477,8 +482,7 @@ section {
 
 .card-image div:last-child {
   position: relative;
-  padding: 10px 10px 15px 10px;
-  background: linear-gradient(#efefef, #E2E2E2); }
+  padding: 0 10px 15px 10px; }
   .card-image div:last-child label {
     display: block; }
   .card-image div:last-child input[name="expire-data"] {
@@ -487,7 +491,8 @@ section {
     position: absolute;
     right: 10px;
     bottom: 13px;
-    margin: 0; }
+    margin: 0;
+    font-weight: bold; }
   .card-image div:last-child i {
     font-size: 48px;
     margin-left: 10px; }

@@ -70,5 +70,8 @@
     "underscore": {
       "exports": "_"
     }
+  },
+  "jshintConfig": {
+    "asi": true
   }
 }

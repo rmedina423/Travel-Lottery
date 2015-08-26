@@ -40,17 +40,15 @@ var LandingPage = Backbone.View.extend({
 
 		this.collection.user.fetch().done(function (users) {
 			var contributions = _.pluck(users, 'contributions').reduce(_.add)
+			var userModels = _this.collection.user.models
+			var validEntrants = []
 
-			if (contributions >= 21) {
-
-				var userModels = _this.collection.user.models
+			if (contributions >= App.WinningNumber) {
 
 				userModels.forEach(function (user) {
 					user.set('contributions', 0)
 					user.save()
 				})
-
-				var validEntrants = []
 
 				users.forEach(function (user) {
 					if (!!user.contributions) {
@@ -88,7 +86,7 @@ var LandingPage = Backbone.View.extend({
 						slidesToShow: 1,
 						slidesToScroll: 1,
 						autoplay: true,
-						autoplaySpeed: 4000,
+						autoplaySpeed: 6000,
 						arrows: false,
 						cssEase: 'ease'
 					})
@@ -105,49 +103,40 @@ var LandingPage = Backbone.View.extend({
 					}
 				})
 
-				var lengthOfUsers = pastWinners.length
-				var randomUserIndex = _.random(0, lengthOfUsers - 1)
-				var modelWinner = pastWinners[randomUserIndex].attributes
-
 				_this.collection.place.fetch().done(function () {
 
-					var place = _this.collection.place.getPlace(modelWinner.placeId)
-					var placeName = place.get('name')
+					var lengthOfWinners = pastWinners.length
 
-					var modelWinnerInfo = {
-						img: modelWinner.photos[0].value,
-						fullName: modelWinner.displayName,
-						place: placeName,
-						msg: modelWinner.msg,
-						firstName: modelWinner.name.givenName,
-						contributions: contributions
+					if (lengthOfWinners) {
+						var randomUserIndex = _.random(0, lengthOfWinners - 1)
+						var modelWinner = pastWinners[randomUserIndex].attributes
+						var place = _this.collection.place.getPlace(modelWinner.placeId)
+						var placeName = place.get('name')
+
+						var modelWinnerInfo = {
+							img: modelWinner.photos[0].value,
+							fullName: modelWinner.displayName,
+							place: placeName,
+							msg: modelWinner.msg,
+							firstName: modelWinner.name.givenName,
+							contributions: contributions
+						}
+
+						_this.$el.append(contTemplate(modelWinnerInfo))
 					}
-					
-					_this.$el.append(contTemplate(modelWinnerInfo))
 
 					$('.slick').slick({
 						infinite: true,
 						slidesToShow: 1,
 						slidesToScroll: 1,
 						autoplay: true,
-						autoplaySpeed: 4000,
+						autoplaySpeed: 6000,
 						arrows: false,
 						cssEase: 'ease'
 					})
 				})
-				
-
 			}
-
-			$('.target-anchor').click(function () {
-				$('html, body').animate({
-					scrollTop: $('#mission-statement').offset().top
-				}, 500);
-
-				return false;
-			})
 		})
-
 
 		$(window).scroll(function() {
 			var topOfWindow = $(window).scrollTop()
@@ -169,10 +158,24 @@ var LandingPage = Backbone.View.extend({
 	},
 
 	events: {
-		"click a.learn-more": "scroll"
+		"scroll window": "test",
+		"click a.target-anchor": "scroll",
+		"click a.learn-more": "scrollMore"
+	},
+
+	test: function () {
+		console.log("scroll")
 	},
 
 	scroll: function () {
+		$('html, body').animate({
+			scrollTop: $('#mission-statement').offset().top
+		}, 500);
+
+		return false;
+	},
+
+	scrollMore: function () {
 		$('html, body').animate({
 			scrollTop: $('[name=learn-more]').offset().top
 		}, 500);

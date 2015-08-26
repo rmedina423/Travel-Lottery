@@ -13,9 +13,9 @@ var _ = require('lodash')
 app.use('/api', router) 
 
 passport.use(new GooglePlusStrategy({
-    clientID: '1096081615290-9sr52j3uvur2it35urgo487gcvl3vikv.apps.googleusercontent.com',
-    clientSecret: 'r0HJVJ097AuUoDaE1wlYPzF4',
-    callbackURL: 'http://localhost:8000/auth/google/callback'
+  clientID: '448444201920-fktpd7hs51e3fomuof5h7s5rv2b0rei8.apps.googleusercontent.com',
+  clientSecret: 'a6gV3zPvzvsOzXTw8imUkZtv',
+    callbackURL: 'http://5f0c544f.ngrok.com/auth/google/callback'
   },
   function(accessToken, refreshToken, profile, done) {
     // Create or update user, call done() when complete... 
@@ -33,6 +33,13 @@ passport.deserializeUser(function(user, done) {
 	done(null, user)
 })
 
+var local = {}
+
+function localMiddleware(req, res, next) {
+  res.local = local
+  next()
+}
+
 app.use(logger('dev'))
 app.use(express.static(__dirname))
 app.use(cookieParser())
@@ -48,17 +55,26 @@ app.use(function(req, res, next) {
 })
 
 app.get('/auth/google',
+  localMiddleware,
+  function (req, res, next) {
+    res.local.redirect = req.query.redirect
+    next()
+  },
   passport.authenticate('google', { scope: 'https://www.googleapis.com/auth/plus.login' }))
 
 app.get('/auth/google/callback', 
+  localMiddleware,
   passport.authenticate('google', { failureRedirect: '/' }),
   function(req, res) {
-    res.redirect('/')
-    // Successful authentication, redirect home.
-    // res.json(req.user)
+    console.log(res.local.redirect)
+
+    if (res.local.redirect) {
+      res.redirect('/#/' + res.local.redirect)
+    } else {
+      res.redirect('/')
+    }
+
     request('http://localhost:3000/api/users/' + req.user.id, function (err, res, body) {
-      // console.log('new user')
-      console.log(req.user)
       var user = _.omit(req.user, ['_raw', '_json'])
       body = JSON.parse(body)
       if (!body.id) {
@@ -69,8 +85,7 @@ app.get('/auth/google/callback',
           json: true
         },
         function (error, response, body) {
-          // console.log(error)
-          // console.log(req.user)
+          console.log(error)
         })
 
       } else {

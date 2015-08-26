@@ -1,3 +1,4 @@
+/* jshint node: true, asi: true */
 module.exports = {
 
   // MVC Namespaces
@@ -9,6 +10,8 @@ module.exports = {
   Settings: {
     apiRoot: '/api',
     rotateMap: true
-  }
+  },
+
+  WinningNumber: 15
   
 }

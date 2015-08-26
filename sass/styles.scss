@@ -27,10 +27,9 @@ html {
 
 html, body, #map {
 	height: 100vh;
-	// width: 100vw;
 	margin: 0;
 	padding: 0;
-	background-color: #5191FF; 
+	background-color: #5191FF;
 }
 
 main {
@@ -45,7 +44,6 @@ main {
 	> div {
 		max-width: 900px;
 		margin: auto;
-		margin-top: 8%;
 		padding: 9px;
 	}
 }
@@ -100,7 +98,7 @@ Components
 	border-radius: 2px 2px 0 0;
 }
 
-.lightbox, #payment {
+.lightbox, #payment{
 	width: 600px;
 	height: 185px;
 	position: fixed;
@@ -108,7 +106,7 @@ Components
 	left: 50%;
 	transform: translate(-50%, -50%);
 	z-index: 1;
-	background-color: #79CD71;
+	background-color: rgba(121, 205, 113, 0.75);
 	text-align: center;
 	padding: 20px;
 	border: 2px solid #f4eecb;	
@@ -119,14 +117,6 @@ Components
 		font-weight: bold;
 		margin: 0;
 	}
-
-	// .close {
-	// 	position: absolute;
-	// 	top: 10px;
-	// 	right: 10px;
-	// 	font-weight: bold;
-	// 	cursor: pointer;
-	// }
 
 	.buttons {
 		text-align: center;
@@ -158,7 +148,7 @@ footer span, button, .show-more, .btn, #signinButton {
 	}
 }
 
-.button-container {
+.button-container, .title  {
 	position: absolute;
 	left: 50%;
 	top: 75%;
@@ -171,6 +161,13 @@ footer span, button, .show-more, .btn, #signinButton {
 		margin: 0 10px 0 10px;
 		text-decoration: none;
 	}
+}
+
+.title {
+	top: 25%;
+	font-size: 40px;
+	font-weight: bold;
+	text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.72);
 }
 
 .primary-header {
@@ -204,7 +201,6 @@ footer span, button, .show-more, .btn, #signinButton {
 
 	nav {
 		display: inline-block;
-		// margin-left: 30%;
 		position: absolute;
 		top: 10px;
 		right: 3%;
@@ -224,8 +220,6 @@ footer span, button, .show-more, .btn, #signinButton {
 	top: 50%;	
 }
 .contributions {
-	// position: absolute;
-	// top: 50%;
 	width: 100%;
 	text-align: center;
 	font-size: 60px;
@@ -265,8 +259,6 @@ footer span, button, .show-more, .btn, #signinButton {
 }
 
 .winner {
-	// position: absolute;
-	// top: 50%;
 	width: 100%;
 	background-color: rgba(121, 205, 113, 0.75);
 	height: 120px;
@@ -325,12 +317,10 @@ footer span, button, .show-more, .btn, #signinButton {
 		font-weight: bold;
 	}
 	div:first-child {
-		// background-color: red;
 		flex: 2;
 		text-align: center;
 	}
 	div:last-child {
-		// background-color: blue;
 		text-align: center;
 		flex: 4;
 	}
@@ -360,21 +350,20 @@ footer span, button, .show-more, .btn, #signinButton {
 	color: #fff;
 }
 
-label[for=address], label[for=why] {
+label[for=address], label[for=why], .log-in {
 	font-size: 70px;
 	font-weight: bold;
 	color: #FCFAFA;
-	text-shadow: 4px 4px 5px rgba(150, 150, 150, 1);
+	text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.72);
 	h1 {
 		margin: 0;
 	}
 }
 
 #address, #this_is_why {
-	// display: block;
 	box-sizing: border-box;
 	width: 570px;
-	height: 32px;
+	height: 40px;
 	margin-top: 10px;
 	padding: 0 11px 0 13px;
 	border: 1px solid transparent;
@@ -383,12 +372,12 @@ label[for=address], label[for=why] {
 	outline: none;
 	box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
 	background-color: #fff;
-	// font-family: Roboto;
 	font-size: 15px;
 	font-weight: 300;
 	text-overflow: ellipsis;
 	color: black;
 	font-weight: bold;
+	border-radius: 6px;
 
 	&:focus {
 		border-color: #4d90fe;
@@ -404,6 +393,7 @@ label[for=address], label[for=why] {
 
 	h1 {
 		font-size: 50px;
+		margin-top: 189px;
 	}
 
 	p {
@@ -431,7 +421,7 @@ label[for=address], label[for=why] {
 
 	header{
 		font-size: 50px;
-		margin-top: 60px;
+		margin-top: 70px;
 		padding: 0 10px;
 	}
 	h6 {
@@ -485,6 +475,10 @@ label[for=address], label[for=why] {
 		font-weight: bold;
 	}
 
+	#signinButton {
+		background-color: rgb(121, 205, 113);
+	}
+
 	span {
 		border-color: #fff;
 		background-color: transparent;
@@ -533,7 +527,7 @@ section {
 	flex: 2;
 	margin-left: 25px;
 	padding: 0 25px 0 25px;
-
+	overflow-wrap: break-word;
 	> div {
 		min-height: 250px;
 		width: 100%;
@@ -551,19 +545,16 @@ section {
 }
 
 #payment {
-	background-color: #79CD71;
-	// width: 530px;
-	height: 430px;
-	padding: 1px 25px 0 25px;
+	height: 340px;
+	padding: 0 10px 0 0;
 	display: flex;
 	overflow: hidden;
-	color: rgb(91, 91, 91);
 	
 	.amount {
-		flex: 1;
-		margin-right: 25px;
-		background-color: #5191FF;
-		padding-top: 162px;
+		flex: 2;
+		margin-right: 10px;
+		background-color: rgba(81, 145, 255, 0.50);
+		padding-top: 120px;
 
 		h1 {
 			margin-top: 45px;
@@ -576,36 +567,34 @@ section {
 	}
 
 	h1, h2 {
-		font-size: 25px;
-		// background-color: pink;
+		font-size: 30px;
 	}
 	h1 {
 		padding: 0 10px 0 15px;
-		margin: 10px 0 20px 0;
+		margin: 10px 0 0 0;
 	}
 	i {
 		margin-right: 10px;
 	}
 	h2 {
 		margin: 0;
-		height: 70px;
-		padding: 23px 10px 0 10px;
-		border-bottom: 2px solid #fbfbfb;
-		background: linear-gradient(#efefef, #E2E2E2);
+		height: 40px;
+		padding: 0 10px 0 10px;
 		font-weight: bold;
 	}
 
 	label {
 		font-size: 16px;
-		// background-color: lime;
+		font-weight: bold;
 	}
 	input {
 		border-radius: 6px;
 		margin-top: 3px;
-		// color: black;
+		height: 40px;
+		background-color: #fff;
+		color: black;
 	}
 	span {
-		// background-color: pink;
 		display: block;
 		margin: auto;
 		width: 80%;
@@ -614,19 +603,15 @@ section {
 		margin-top: 20px;
 		font-size: 20px;
 		padding-top: 8px;
-		border: 2px solid #d0d0d0;
-		border-radius: 6px;
+		border-radius: 4px;
 		cursor: pointer;
 		font-weight: bold;
-		background: linear-gradient(#efefef, #E2E2E2);
+		background: linear-gradient(#DDDDDD, #5191FF);
 	}
 }
 
 .card-image {
-	// background-color: grey;
-	margin-top: 20px;
-	border: 1px solid rgb(208, 208, 208);
-	border-radius: 8px;
+	margin-top: 10px;
 	text-align: left;
 	overflow: hidden;
 
@@ -638,8 +623,6 @@ section {
 .card-image .container{
 	display: flex;
 	padding: 10px 10px 10px 10px;
-	border-bottom: 2px solid #fbfbfb;
-	background: linear-gradient(#efefef, #E2E2E2);
 	
 	div input, label {
 		width: 100%;
@@ -659,8 +642,7 @@ section {
 
 .card-image div:last-child {
 	position: relative;
-	padding: 10px 10px 15px 10px;
-	background: linear-gradient(#efefef, #E2E2E2);
+	padding: 0 10px 15px 10px;
 	label {
 		display: block;
 	}
@@ -673,6 +655,7 @@ section {
 		right: 10px;
 		bottom: 13px;
 		margin: 0;
+		font-weight: bold;
 	}
 
 	i {

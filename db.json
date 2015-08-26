@@ -1,22 +1,76 @@
 {
   "places": [
     {
-      "name": "Australia",
-      "lat": -25.274398,
-      "lng": 133.77513599999997,
+      "name": "Italy",
+      "lat": 41.87194,
+      "lng": 12.567379999999957,
+      "id": 2
+    },
+    {
+      "name": "Canada",
+      "lat": 56.130366,
+      "lng": -106.34677099999999,
       "id": 3
     },
     {
-      "name": "Chile",
-      "lat": -35.675147,
-      "lng": -71.54296899999997,
+      "name": "New Zealand",
+      "lat": -40.900557,
+      "lng": 174.88597100000004,
       "id": 4
     },
     {
-      "name": "Kazakhstan",
-      "lat": 48.019573,
-      "lng": 66.92368399999998,
+      "name": "South Africa",
+      "lat": -30.559482,
+      "lng": 22.937505999999985,
+      "id": 5
+    },
+    {
+      "name": "Angola",
+      "lat": -11.202692,
+      "lng": 17.873886999999968,
+      "id": 6
+    },
+    {
+      "name": "Democratic Republic of the Congo",
+      "lat": -4.038333,
+      "lng": 21.758663999999953,
+      "id": 7
+    },
+    {
+      "name": "A S D F a S D F",
+      "lat": 41.024147,
+      "lng": -73.76432999999997,
+      "id": 8
+    },
+    {
+      "name": "Hacker Way",
+      "lat": 37.483237,
+      "lng": -122.14693399999999,
+      "id": 9
+    },
+    {
+      "name": "Marseille",
+      "lat": 43.296482,
+      "lng": 5.369779999999992,
+      "id": 10
+    },
+    {
+      "name": "Broken Software",
+      "lat": 33.459458,
+      "lng": -111.642224,
+      "id": 11
+    },
+    {
+      "name": "Oklahoma",
+      "lat": 35.0077519,
+      "lng": -97.09287699999999,
       "id": 12
+    },
+    {
+      "name": "Ibiza",
+      "lat": 38.9067339,
+      "lng": 1.4205982999999378,
+      "id": 13
     },
     {
       "name": "Iceland",
@@ -25,74 +79,126 @@
       "id": 14
     },
     {
-      "name": "Częstochowa",
-      "lat": 50.8118195,
-      "lng": 19.120309399999996,
+      "name": "asdfghj",
+      "lat": -12.066208,
+      "lng": -76.941259,
       "id": 15
+    },
+    {
+      "name": "Ryan Family Amusements",
+      "lat": 42.424265,
+      "lng": -71.068647,
+      "id": 16
+    },
+    {
+      "name": "Germany",
+      "lat": 51.165691,
+      "lng": 10.451526000000058,
+      "id": 17
+    },
+    {
+      "name": "Real Beer Media",
+      "lat": 37.760124,
+      "lng": -122.388057,
+      "id": 18
     },
     {
       "name": "Romania",
       "lat": 45.943161,
       "lng": 24.966760000000022,
-      "id": 16
+      "id": 19
+    },
+    {
+      "name": "Ryan International School",
+      "lat": 28.533055,
+      "lng": 77.14482999999996,
+      "id": 20
+    },
+    {
+      "name": "Medina Funtastic Toyz",
+      "lat": 41.137662,
+      "lng": -81.86578600000001,
+      "id": 21
+    },
+    {
+      "name": "Nigeria",
+      "lat": 9.081999,
+      "lng": 8.675277000000051,
+      "id": 22
+    },
+    {
+      "name": "Greece",
+      "lat": 39.074208,
+      "lng": 21.824311999999964,
+      "id": 23
+    },
+    {
+      "name": "Turkey",
+      "lat": 38.963745,
+      "lng": 35.243322000000035,
+      "id": 24
+    },
+    {
+      "name": "Mongolia",
+      "lat": 46.862496,
+      "lng": 103.84665599999994,
+      "id": 25
+    },
+    {
+      "name": "Colombia",
+      "lat": 4.570868,
+      "lng": -74.29733299999998,
+      "id": 26
+    },
+    {
+      "name": "Busan",
+      "lat": 35.1795543,
+      "lng": 129.07564160000004,
+      "id": 27
+    },
+    {
+      "name": "Puerto Peñasco",
+      "lat": 31.3268218,
+      "lng": -113.5311843,
+      "id": 28
     }
   ],
   "users": [
     {
       "provider": "google",
-      "id": 113987806811958300000,
-      "displayName": "Duane Winkel",
+      "id": 100399775622978080000,
+      "displayName": "Matt Lewandowski",
       "name": {
-        "familyName": "Winkel",
-        "givenName": "Duane"
+        "familyName": "Lewandowski",
+        "givenName": "Matt"
       },
       "photos": [
         {
-          "value": "https://lh4.googleusercontent.com/-qYnRvey-BK0/AAAAAAAAAAI/AAAAAAAAub0/sCI817lnfHk/photo.jpg?sz=50"
+          "value": "https://lh3.googleusercontent.com/-XJTC8WtaFGw/AAAAAAAAAAI/AAAAAAAAAEA/Aj7dKFBjfHU/photo.jpg?sz=50"
         }
       ],
       "gender": "male",
-      "msg": "Because I like Kangaroos",
-      "placeId": 3,
-      "winner": true,
-      "contributions": 0
+      "msg": "They know how to party!",
+      "placeId": 13,
+      "contributions": 1
     },
     {
       "provider": "google",
-      "id": 107721885084506140000,
-      "displayName": "Nathaniel Medina",
+      "id": 109553670146051870000,
+      "displayName": "Keith Konetzni",
       "name": {
-        "familyName": "Medina",
-        "givenName": "Nathaniel"
+        "familyName": "Konetzni",
+        "givenName": "Keith"
       },
       "photos": [
         {
-          "value": "https://lh6.googleusercontent.com/-qQU09oRj1aU/AAAAAAAAAAI/AAAAAAAAAXU/FwumtY_rG2g/photo.jpg?sz=50"
+          "value": "https://lh5.googleusercontent.com/-RA4ZOsAuSxE/AAAAAAAAAAI/AAAAAAAAAWI/wnhU65d3_vQ/photo.jpg?sz=50"
         }
       ],
       "gender": "male",
-      "msg": "Because I love me some CHILE!!!",
-      "placeId": 4,
-      "contributions": 0
-    },
-    {
-      "provider": "google",
-      "id": 115265269931366510000,
-      "displayName": "Chris V",
-      "name": {
-        "familyName": "V",
-        "givenName": "Chris"
-      },
-      "photos": [
-        {
-          "value": "https://lh3.googleusercontent.com/-Sgv1XxKSk-s/AAAAAAAAAAI/AAAAAAAAAKc/-v8BXRk3ap8/photo.jpg?sz=50"
-        }
-      ],
-      "gender": "male",
-      "msg": "It NICE",
+      "msg": "Oklahoma is where it's at :D",
       "placeId": 12,
-      "winner": true,
-      "contributions": 0
+      "contributions": 1
     },
     {
       "provider": "google",
@@ -108,10 +214,100 @@
         }
       ],
       "gender": "male",
-      "msg": "I LOVE me some Romanian women! ;)",
-      "placeId": 16,
-      "contributions": 0,
+      "msg": "Because the weather is AMAZING!",
+      "placeId": 26,
+      "contributions": 1
+    },
+    {
+      "provider": "google",
+      "id": 107207423776687080000,
+      "displayName": "Troy Mullaney",
+      "name": {
+        "familyName": "Mullaney",
+        "givenName": "Troy"
+      },
+      "photos": [
+        {
+          "value": "https://lh4.googleusercontent.com/-jHg7w5FCK3E/AAAAAAAAAAI/AAAAAAAAArA/-Ca63XgJjCc/photo.jpg?sz=50"
+        }
+      ],
+      "gender": "male",
+      "msg": "Because you only have to be 16 to drink :D",
+      "placeId": 17,
+      "contributions": 1,
       "winner": true
+    },
+    {
+      "provider": "google",
+      "id": 112556850082362130000,
+      "displayName": "Kevin Lanni",
+      "name": {
+        "familyName": "Lanni",
+        "givenName": "Kevin"
+      },
+      "photos": [
+        {
+          "value": "https://lh5.googleusercontent.com/-TqavhYD9fvQ/AAAAAAAAAAI/AAAAAAAAXEs/NesQAG1wEIo/photo.jpg?sz=50"
+        }
+      ],
+      "gender": "male",
+      "msg": "They tore down my city wall!",
+      "placeId": 25,
+      "contributions": 1
+    },
+    {
+      "provider": "google",
+      "id": 101417535493510280000,
+      "displayName": "Keith Wasielewski",
+      "name": {
+        "familyName": "Wasielewski",
+        "givenName": "Keith"
+      },
+      "photos": [
+        {
+          "value": "https://lh3.googleusercontent.com/-iKUTxsMnE78/AAAAAAAAAAI/AAAAAAAAANE/d9kYzTfGIoE/photo.jpg?sz=50"
+        }
+      ],
+      "gender": "male",
+      "msg": "I LOVE MEDINA for making this site!",
+      "placeId": 4,
+      "contributions": 1
+    },
+    {
+      "provider": "google",
+      "id": 113987806811958300000,
+      "displayName": "Duane Winkel",
+      "name": {
+        "familyName": "Winkel",
+        "givenName": "Duane"
+      },
+      "photos": [
+        {
+          "value": "https://lh4.googleusercontent.com/-qYnRvey-BK0/AAAAAAAAAAI/AAAAAAAAub0/sCI817lnfHk/photo.jpg?sz=50"
+        }
+      ],
+      "gender": "male",
+      "msg": "I love this place",
+      "placeId": 8,
+      "contributions": 1
+    },
+    {
+      "provider": "google",
+      "id": 105041911372695760000,
+      "displayName": "Will Fortin",
+      "name": {
+        "familyName": "Fortin",
+        "givenName": "Will"
+      },
+      "photos": [
+        {
+          "value": "https://lh6.googleusercontent.com/-o7oxkWAvVww/AAAAAAAAAAI/AAAAAAAAJCY/ZooF3uWKDUM/photo.jpg?sz=50"
+        }
+      ],
+      "gender": "male",
+      "msg": "I'm French.. and I hear the weather is nice.",
+      "placeId": 10,
+      "contributions": 1
     },
     {
       "provider": "google",
@@ -127,9 +323,63 @@
         }
       ],
       "gender": "male",
-      "msg": "I have never been there and I think it's gonna be loaded with lots of eye candy. :)",
+      "msg": "I have never had the opportunity to go there and I think it will be loaded with hot food",
       "placeId": 14,
-      "contributions": 0
+      "contributions": 1
+    },
+    {
+      "provider": "google",
+      "id": 107721885084506140000,
+      "displayName": "Nathaniel Medina",
+      "name": {
+        "familyName": "Medina",
+        "givenName": "Nathaniel"
+      },
+      "photos": [
+        {
+          "value": "https://lh6.googleusercontent.com/-qQU09oRj1aU/AAAAAAAAAAI/AAAAAAAAAXU/FwumtY_rG2g/photo.jpg?sz=50"
+        }
+      ],
+      "gender": "male",
+      "msg": "People say I look Greek :P",
+      "placeId": 23,
+      "contributions": 1
+    },
+    {
+      "provider": "google",
+      "id": 107517953345309500000,
+      "displayName": "BK Lamoreaux",
+      "name": {
+        "familyName": "Lamoreaux",
+        "givenName": "BK"
+      },
+      "photos": [
+        {
+          "value": "https://lh5.googleusercontent.com/-AIA6LBLDIRA/AAAAAAAAAAI/AAAAAAAA9f0/9ffH_QP2z68/photo.jpg?sz=50"
+        }
+      ],
+      "gender": "other",
+      "msg": "I've been here and It is great",
+      "placeId": 27,
+      "contributions": 1
+    },
+    {
+      "provider": "google",
+      "id": 115265269931366510000,
+      "displayName": "Chris V",
+      "name": {
+        "familyName": "V",
+        "givenName": "Chris"
+      },
+      "photos": [
+        {
+          "value": "https://lh3.googleusercontent.com/-Sgv1XxKSk-s/AAAAAAAAAAI/AAAAAAAAAKc/-v8BXRk3ap8/photo.jpg?sz=50"
+        }
+      ],
+      "gender": "male",
+      "msg": "I live on the edge",
+      "placeId": 28,
+      "contributions": 1
     }
   ]
 }

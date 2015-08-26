@@ -1,3 +1,4 @@
+/* jshint node: true, asi: true */
 var $ = require('jquery')
 var Backbone = require('backbone')
 var _ = require('lodash')
@@ -61,37 +62,37 @@ var map = function(mapEl) {
 				})
 
 				markers.push(marker)
-			}
 
-			if (!matchedUser) {
-				unmatchedPlace = placeCollection.getPlace(place.id)
-				unmatchedPlace.destroy()
-			}
+			// if (!matchedUser) {
+			// 	unmatchedPlace = placeCollection.getPlace(place.id)
+			// 	unmatchedPlace.destroy()
+			// }
 
-			marker.addListener('click', function(event) {
-				console.log(event)
-				if (infowindow) {
-					infowindow.close()
-				}
-				var placeMarker = placeCollection.findWhere({
-					lat: marker.position.G,
-					lng: marker.position.K
-				})
-
-				var userMarker = userCollection.getUser(placeMarker.id)
-
-				infowindow = new google.maps.InfoWindow({
-					content: whyTemplate({
-						id: userMarker.get('id'),
-						name: userMarker.get('displayName'),
-						msg: userMarker.get('msg'),
-						winner: String(userMarker.get('winner'))
+				marker.addListener('click', function(event) {
+					console.log(event)
+					if (infowindow) {
+						infowindow.close()
+					}
+					var placeMarker = placeCollection.findWhere({
+						lat: marker.position.G,
+						lng: marker.position.K
 					})
-				})
-				
-				infowindow.open(map, marker)
-			})
 
+					var userMarker = userCollection.getUser(placeMarker.id)
+
+					infowindow = new google.maps.InfoWindow({
+						content: whyTemplate({
+							id: userMarker.get('id'),
+							name: userMarker.get('displayName'),
+							msg: userMarker.get('msg'),
+							winner: String(userMarker.get('winner'))
+						})
+					})
+					
+					infowindow.open(map, marker)
+				})
+
+			}
 		})
 	})
 
@@ -108,8 +109,6 @@ var map = function(mapEl) {
 
 		if (counter === placeCollection.length-1) {
 			indexNumber = 0
-		} else {
-			counter
 		}
 
 		if (App.Settings.rotateMap) {

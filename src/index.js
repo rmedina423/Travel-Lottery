@@ -10,15 +10,15 @@ var userCollection = require('./collections/user')
 
 // View: Landing Page
 var LandingPage = require('./views/landing-page')
-App.Views.landingPage = new LandingPage
+App.Views.landingPage = new LandingPage()
 
 // View: Process
 var Process = require('./views/process.js')
-App.Views.process = new Process
+App.Views.process = new Process()
 
 // View: User Profile
 var UserProfile = require('./views/user-page')
-App.Views.userProfile = new UserProfile
+App.Views.userProfile = new UserProfile()
 
 var loggedInUserTemplate = require('./templates/logged-in-user.hbs')
 var searchButtonTemplate = require('./templates/search-button.hbs')
@@ -57,7 +57,7 @@ App.Router = Backbone.Router.extend({
 })
 
   // Initiate the router
-App.router = new App.Router;
+App.router = new App.Router()
 
 Backbone.history.start();
 
@@ -68,5 +68,4 @@ $.get('/auth/google/profile').done(function (user) {
 
 }).fail(function () {
   console.log('not logged in :(')
-  // $('main').find('.search-button').hide()
 })

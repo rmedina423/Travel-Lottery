@@ -1,4 +1,4 @@
-  'use strict';
+'use strict';
 
 var gulp = require('gulp')
 var gutil = require('gulp-util')
@@ -34,7 +34,7 @@ gulp.task('build', ['clean'], function () {
 })
 
 gulp.task('lint', function() {
-  return gulp.src('./src/index.js')
+  return gulp.src('./src/views/*.js')
     .pipe(jshint())
     .pipe(jshint.reporter('jshint-stylish'))
 })

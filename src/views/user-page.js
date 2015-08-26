@@ -22,6 +22,7 @@ var UserProfile = Backbone.View.extend({
 
 	render: function(userId) {
 		this.$el.html('')
+		
 		var _this = this
 
 		if (!!userId) {
