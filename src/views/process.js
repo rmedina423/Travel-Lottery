@@ -144,6 +144,7 @@ var Process = Backbone.View.extend({
 
 	submitPayment: function () {
 		var user = userCollection.findWhere({displayName: this.userLoggedIn.displayName})
+		console.log(user)
 		var contributions = user.get('contributions')
 
 		var currentPlace = placeCollection.findWhere({

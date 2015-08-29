@@ -10,17 +10,9 @@ var App = require('./app')
 var Place = require('./models/place')
 var User = require('./models/user')
 
-// why template
+// Templates
 var whyTemplate = require('./templates/infowindow.hbs')
 var addressTemplate = require('./templates/search.hbs')
-
-var iwOuter = $('.gm-style-iw')
-var iwBackground = iwOuter.prev()
-iwOuter.next().hide();
-
-iwBackground.children(':nth-child(2)').css({'display' : 'none'})
-iwBackground.children(':nth-child(4)').css({'display' : 'none'})
-
 
 var map = function(mapEl) {
 	var userCollection = App.Collections.user
@@ -28,15 +20,9 @@ var map = function(mapEl) {
 	var markers = []
 	var infowindow
 
-	var iwOuter = $('.gm-style-iw')
-	var iwBackground = iwOuter.prev()
-	iwOuter.next().hide();
-
-	iwBackground.children(':nth-child(2)').css({'display' : 'none'})
-	iwBackground.children(':nth-child(4)').css({'display' : 'none'})
-
 	userCollection.fetch()
 
+	// initiate map
 	var map = new google.maps.Map(mapEl, {
 		mapTypeId: google.maps.MapTypeId.TERRAIN,
 		zoom: 3,
@@ -47,6 +33,7 @@ var map = function(mapEl) {
 
 	App.map = map
 
+	// create markers
 	placeCollection.fetch().done(function (places) {
 		places.forEach(function (place) {
 
@@ -63,13 +50,9 @@ var map = function(mapEl) {
 
 				markers.push(marker)
 
-			// if (!matchedUser) {
-			// 	unmatchedPlace = placeCollection.getPlace(place.id)
-			// 	unmatchedPlace.destroy()
-			// }
-
+				// marker listening for click events
 				marker.addListener('click', function(event) {
-					console.log(event)
+
 					if (infowindow) {
 						infowindow.close()
 					}
@@ -90,12 +73,13 @@ var map = function(mapEl) {
 					})
 					
 					infowindow.open(map, marker)
-				})
 
+				})
 			}
 		})
 	})
 
+	// listen for drag events
 	google.maps.event.addListener(map, 'drag', function() {
 		App.Settings.rotateMap = false
 		setTimeout(function () {
@@ -103,9 +87,12 @@ var map = function(mapEl) {
 		}, 20000)
 	})
 
+	// rotate map every 4 seconds
 	var indexNumber = 0
 	setInterval(function () {
 		var counter = indexNumber++
+		var place = placeCollection.models[counter]
+		var user = userCollection.getUser(place.id)
 
 		if (counter === placeCollection.length-1) {
 			indexNumber = 0
@@ -117,11 +104,7 @@ var map = function(mapEl) {
 				infowindow.close()
 			}
 
-			var place = placeCollection.models[counter]
-			var user = userCollection.getUser(place.id)
-
 			if (user) {
-
 				var userInfo = {
 					id: user.get('id'),
 					name: user.get('displayName'),
@@ -162,12 +145,5 @@ var map = function(mapEl) {
 
 	}, 4000)
 }
-
-var iwOuter = $('.gm-style-iw')
-var iwBackground = iwOuter.prev()
-iwOuter.next().hide();
-
-iwBackground.children(':nth-child(2)').css({'display' : 'none'})
-iwBackground.children(':nth-child(4)').css({'display' : 'none'})
 
 module.exports = map

@@ -9,7 +9,7 @@ var App = require('../app')
 var Place = require('../models/place')
 var User = require('../models/user')
 
-// templates
+// Templates
 var userProfile = require('../templates/user-profile.hbs')
 
 var UserProfile = Backbone.View.extend({
@@ -25,6 +25,7 @@ var UserProfile = Backbone.View.extend({
 		
 		var _this = this
 
+		// if there is NOT a userId, list all users
 		if (!!userId) {
 			this.collection.user.fetch().done(function () {
 				var userModel = _this.collection.user.get(userId)
@@ -47,9 +48,11 @@ var UserProfile = Backbone.View.extend({
 				})
 
 			})
+		// if there IS a userId, show that specific user
 		} else {
 			this.collection.user.fetch().done(function () {
 				var userModels = _this.collection.user.models
+				
 				userModels.forEach(function (userModel) {
 					var userPlaceId = userModel.attributes.placeId
 					

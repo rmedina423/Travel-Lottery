@@ -20,6 +20,7 @@ App.Views.process = new Process()
 var UserProfile = require('./views/user-page')
 App.Views.userProfile = new UserProfile()
 
+// Templates
 var loggedInUserTemplate = require('./templates/logged-in-user.hbs')
 var searchButtonTemplate = require('./templates/search-button.hbs')
 
@@ -56,16 +57,17 @@ App.Router = Backbone.Router.extend({
   }
 })
 
-  // Initiate the router
+// Initiate the router
 App.router = new App.Router()
 
 Backbone.history.start();
 
+// request for profile information
 $.get('/auth/google/profile').done(function (user) {
-  console.log('logged in! :)')
+  // console.log('logged in! :)')
   $('#loggedInUser').html(loggedInUserTemplate({user: user.displayName}))
   $('.primary-footer > div').html(searchButtonTemplate())
 
 }).fail(function () {
-  console.log('not logged in :(')
+  // console.log('not logged in :(')
 })
