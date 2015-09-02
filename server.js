@@ -19,7 +19,7 @@ app.use('/api', apiRouter)
 passport.use(new GooglePlusStrategy({
   clientID: '448444201920-fktpd7hs51e3fomuof5h7s5rv2b0rei8.apps.googleusercontent.com',
   clientSecret: 'a6gV3zPvzvsOzXTw8imUkZtv',
-  callbackURL: 'http://5f0c544f.ngrok.com/auth/google/callback'
+  callbackURL: 'http://localhost:8000/auth/google/callback'
 }, function(accessToken, refreshToken, profile, done) {
   // Create or update user, call done() when complete... 
   done(null, profile)
