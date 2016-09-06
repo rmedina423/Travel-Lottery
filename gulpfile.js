@@ -8,6 +8,7 @@ var rimraf = require('rimraf')
 var serve = require('gulp-serve')
 var sass = require('gulp-sass')
 var jshint = require('gulp-jshint')
+var jshintConfig  = require('./package').jshintConfig;
 var browserSync = require('browser-sync')
 var nodemon = require('gulp-nodemon')
 
@@ -20,7 +21,7 @@ var bundler = browserify({
   debug: true
 })
 
-bundler.on('log', gutil.log) // output build logs to terminal
+bundler.on('log', gutil.log)
 
 gulp.task('clean', function (cb) {
   rimraf('build', cb)
@@ -34,8 +35,8 @@ gulp.task('build', ['clean'], function () {
 })
 
 gulp.task('lint', function() {
-  return gulp.src('./src/views/*.js')
-    .pipe(jshint())
+  return gulp.src('./src/**/*.js')
+    .pipe(jshint(jshintConfig))
     .pipe(jshint.reporter('jshint-stylish'))
 })
 

@@ -72,6 +72,8 @@
     }
   },
   "jshintConfig": {
-    "asi": true
+    "node": true,
+    "browser": true,
+    "validthis": true
   }
 }
