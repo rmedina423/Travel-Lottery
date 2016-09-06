@@ -14,7 +14,7 @@ App.Models.Place = Backbone.Model.extend({
   url: function() {
     var base = App.Settings.apiRoot + '/places';
     if (this.isNew()) return base;
-    return base + '/' + this.id
+    return base + '/' + this.id;
   }
 });
 
